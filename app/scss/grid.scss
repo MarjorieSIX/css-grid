@@ -1,0 +1,161 @@
+@import "breakpoints";
+
+// Media Queries
+$grid: (
+  md: 960px,
+  lg: 1152px,
+  xl: 1392px
+);
+
+$columns: (
+	xs: 4px,
+	sm: 12px,
+	md: 12px,
+  lg: 24px,
+  xl: 24px
+);
+
+$columnsSize: (
+	md: 56px,
+  lg: 24px,
+  xl: 34px
+);
+
+$gutters: (
+	xs: 12px,
+	sm: 12px,
+	md: 24px,
+  lg: 24px,
+  xl: 24px
+);
+
+
+
+/* autoprefixer grid: autoplace */
+body {
+	height: 100%;
+  margin: 0;  
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-columns: 2fr 5fr 3fr; // (repeat(24, 1fr))
+  grid-template-areas: 
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+  grid-gap: 24px;        
+	height: 100vh;
+	
+  @media(max-width: 768px){
+    grid-template-rows: 1fr 1fr 5fr 1fr;
+    grid-template-columns: 2fr 5fr 3fr;
+    grid-template-areas: 
+    "header header header"
+    "nav nav nav"
+    "main main aside"    
+    "footer footer footer";    
+	}
+	
+  @media(max-width: 480px){
+    display: block;
+	}
+	
+  header{
+    grid-area: header;
+    background-color: teal; 
+	}
+	
+  nav.main-nav {
+    grid-area: nav;
+    background-color: tomato;
+	}
+	
+  main{
+    grid-area: main;
+    background-color: lightblue;
+	}
+	
+  aside {
+    grid-area: aside;
+    background-color: orange;
+	}
+	
+  footer{
+    grid-area: footer;
+  }
+}
+/*
+	@include bp('lg') {
+		justify-content: flex-end;
+	}
+	
+	@supports (display: grid) {
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: 1fr 1fr;
+		
+		@include bp('lg') {
+			grid-template-columns: repeat(24, 1fr);
+		}
+	}
+}*/
+
+
+
+.support {
+	align-items: center;
+	background: tomato;
+	color: #fff;
+	display: flex;
+	font-size: .9rem;
+	padding: 0 10px 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: auto;
+	z-index: 100;
+
+	a { 
+		color: #fff;
+		padding: 10px 0;
+		text-decoration: none;
+	}
+	
+	@supports ( display: grid ) {
+		background: rgb(5,138,110);
+		right: 40px;
+		transform: translateX(100%);
+		transition: right .5s ease-in-out, transform .5s ease-in-out;
+
+		&:hover {
+			right: 0;
+			transform: translateX(0%);
+		}
+	}
+}
+
+.support svg {
+	fill: #ffffff;
+	height: 30px;
+	margin-right: 5px;
+	padding: 5px;
+	width: 30px;
+}
+
+.unsupported {
+	display: block;
+	
+	@supports ( display: grid ) {
+		display: none;
+	}
+}
+
+.supported {
+	display: none;
+	
+	@supports ( display: grid ) {
+		display: block;
+	}
+}
