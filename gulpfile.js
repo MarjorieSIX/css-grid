@@ -6,8 +6,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var input = './app/scss/*.scss';
 var output = './app/css';
 var autoprefixerOptions = {
-  browsers: ['last 1 version', 'Safari 11', 'Chrome 9'], // tester sur https://browserl.ist/
-  grid: true,
+  // tester sur https://browserl.ist/
+  browsers: ['last 1 version', 'Safari 9', 'Safari 10', 'Safari 11'], 
+  grid: false,
   supports: true
 };
 

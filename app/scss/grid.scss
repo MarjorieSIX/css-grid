@@ -1,26 +1,68 @@
-@import "breakpoints";
-
 // Media Queries
+
+$xs: (
+ breakpoint: 320px,
+ grid: 100%,
+ grid-columns: 4,
+ grid-gutters: 12px
+);
+$sm: (
+ breakpoint: 768px,
+ grid: 100%,
+ grid-columns: 12,
+ grid-gutters: 12px
+);
+$md: (
+ breakpoint: 992px,
+ grid: 960px,
+ grid-columns: 12,
+ grid-gutters: 24px
+);
+$lg: (
+ breakpoint: 1200px,
+ grid: 1152px,
+ grid-columns: 24,
+ grid-gutters: 24px
+);
+$xl: (
+ breakpoint: 1440px,
+ grid: 1392px,
+ grid-columns: 24,
+ grid-gutters: 24px
+);
+
+
+$breakpoints: (
+  xs: 320px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1440px
+);
+
 $grid: (
+	xs: 100%,
+	sm: 100%,
   md: 960px,
   lg: 1152px,
   xl: 1392px
 );
 
 $columns: (
-	xs: 4px,
-	sm: 12px,
-	md: 12px,
-  lg: 24px,
-  xl: 24px
+	xs: 4,
+	sm: 12,
+	md: 12,
+  lg: 24,
+  xl: 24
 );
 
+/*
 $columnsSize: (
 	md: 56px,
   lg: 24px,
   xl: 34px
 );
-
+*/
 $gutters: (
 	xs: 12px,
 	sm: 12px,
@@ -30,16 +72,51 @@ $gutters: (
 );
 
 
-
-/* autoprefixer grid: autoplace */
 body {
 	height: 100%;
-  margin: 0;  
+	margin: 0;
 }
 
+@each $screen-size in $columns {
+	@include bp('$screen-size') {
+		.grid-column:nth-child(-n+$column) {
+			display: block;
+		}
+	}
+}
+
+@each $screen-size in $breakpoints {
+	.grid-display {
+		grid-gap: map-get($gutters, $screen-size);
+		grid-template-rows: 1;
+		grid-template-columns: repeat(map-get($columns, $screen-size), 1fr);
+		margin: 0 map-get($gutters, $screen-size);
+		width: map-get($grid, $screen-size);
+	}
+	
+}
+
+.grid-display {
+	display: grid;
+	height: 100vh;
+	position: relative;
+
+	.grid-column {
+		display: none;
+		background-color: lightgreen;
+	}
+}
+
+
+
+
+
 .container {
-  display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-rows: 1fr 5fr 1fr;
+	grid-template-rows: 1fr 5fr 1fr;
+	-ms-grid-columns: 2fr 5fr 3fr;
   grid-template-columns: 2fr 5fr 3fr; // (repeat(24, 1fr))
   grid-template-areas: 
     "header header header"
@@ -49,7 +126,9 @@ body {
 	height: 100vh;
 	
   @media(max-width: 768px){
-    grid-template-rows: 1fr 1fr 5fr 1fr;
+		-ms-grid-rows: 1fr 1fr 5fr 1fr;
+		grid-template-rows: 1fr 1fr 5fr 1fr;
+		-ms-grid-columns: 2fr 5fr 3fr;
     grid-template-columns: 2fr 5fr 3fr;
     grid-template-areas: 
     "header header header"
@@ -63,26 +142,40 @@ body {
 	}
 	
   header{
+		-ms-grid-row: 1; 
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 3; 
     grid-area: header;
     background-color: teal; 
 	}
 	
   nav.main-nav {
-    grid-area: nav;
+		-ms-grid-row: 2; 
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 3; 
+		grid-area: nav;
     background-color: tomato;
 	}
 	
-  main{
+  section.main{
+		-ms-grid-row: 3; 
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2; 
     grid-area: main;
     background-color: lightblue;
 	}
 	
   aside {
+		-ms-grid-row: 3; 
+		-ms-grid-column: 1; 
     grid-area: aside;
     background-color: orange;
 	}
 	
-  footer{
+  footer {
+		-ms-grid-row: 4; 
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 3; 
     grid-area: footer;
   }
 }
@@ -103,7 +196,7 @@ body {
 }*/
 
 
-
+/*
 .support {
 	align-items: center;
 	background: tomato;
@@ -159,3 +252,4 @@ body {
 		display: block;
 	}
 }
+*/

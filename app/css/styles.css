@@ -101,7 +101,7 @@ section {
   display: block; }
 
 body {
-  line-height: 1; }
+  line-height: 1.5; }
 
 ol,
 ul {
@@ -124,77 +124,111 @@ table {
 
 /* if selector is wider than the screensize we are calling */
 /* if selector is wider than the screensize we are calling */
-/* autoprefixer grid: autoplace */
 body {
   height: 100%;
   margin: 0; }
 
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* then write out a nested Media Query that will target that value as our min-width */
+@media (min-width: 320px) {
+  /* write CSS within this mixin that would apply to only this breakpoint or above */
+  .grid-column:nth-child(-n+4) {
+    display: block; } }
+
+/* if the screen-size we are requesting doesn't exist, then tell me when it is compiled */
 .container {
   display: -ms-grid;
   display: grid;
-      -ms-grid-rows: 1fr 24px 5fr 24px 1fr;
-      grid-template-rows: 1fr 5fr 1fr;
-      -ms-grid-columns: 2fr 24px 5fr 24px 3fr;
-      grid-template-columns: 2fr 5fr 3fr;
-      grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+  -ms-grid-rows: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  -ms-grid-columns: 2fr 5fr 3fr;
+  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
   grid-gap: 24px;
   height: 100vh; }
   @media (max-width: 768px) {
     .container {
-          -ms-grid-rows: 1fr 1fr 5fr 1fr;
-          grid-template-rows: 1fr 1fr 5fr 1fr;
-          -ms-grid-columns: 2fr 5fr 3fr;
-          grid-template-columns: 2fr 5fr 3fr;
-          grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
+      -ms-grid-rows: 1fr 1fr 5fr 1fr;
+      grid-template-rows: 1fr 1fr 5fr 1fr;
+      -ms-grid-columns: 2fr 5fr 3fr;
+      grid-template-columns: 2fr 5fr 3fr;
+      grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
   @media (max-width: 480px) {
     .container {
       display: block; } }
   .container header {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
+    -ms-grid-column-span: 3;
     grid-area: header;
     background-color: teal; }
   .container nav.main-nav {
-    -ms-grid-row: 3;
+    -ms-grid-row: 2;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     grid-area: nav;
     background-color: tomato; }
-  .container main {
+  .container section.main {
     -ms-grid-row: 3;
-    -ms-grid-column: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
     grid-area: main;
     background-color: lightblue; }
   .container aside {
     -ms-grid-row: 3;
-    -ms-grid-column: 5;
+    -ms-grid-column: 1;
     grid-area: aside;
     background-color: orange; }
   .container footer {
-    -ms-grid-row: 5;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
-    grid-area: footer; }
-  @media (max-width: 768px) {
-    .container header {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3; }
-    .container nav.main-nav {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3; }
-    .container main {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2; }
-    .container aside {
-    -ms-grid-row: 3;
-    -ms-grid-column: 3; }
-    .container footer {
     -ms-grid-row: 4;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 3; } }
+    -ms-grid-column-span: 3;
+    grid-area: footer; }
 
 /*
 	@include bp('lg') {
@@ -211,55 +245,63 @@ body {
 		}
 	}
 }*/
+/*
 .support {
-  align-items: center;
-  background: tomato;
-  color: #fff;
-  display: flex;
-  font-size: .9rem;
-  padding: 0 10px 0 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: auto;
-  z-index: 100; }
-  .support a {
-    color: #fff;
-    padding: 10px 0;
-    text-decoration: none; }
-  @supports (display: grid) {
-    .support {
-      background: #058a6e;
-      right: 40px;
-      -webkit-transform: translateX(100%);
-              transform: translateX(100%);
-      transition: right .5s ease-in-out, -webkit-transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out, -webkit-transform .5s ease-in-out; }
-      .support:hover {
-        right: 0;
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%); } }
+	align-items: center;
+	background: tomato;
+	color: #fff;
+	display: flex;
+	font-size: .9rem;
+	padding: 0 10px 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: auto;
+	z-index: 100;
+
+	a { 
+		color: #fff;
+		padding: 10px 0;
+		text-decoration: none;
+	}
+	
+	@supports ( display: grid ) {
+		background: rgb(5,138,110);
+		right: 40px;
+		transform: translateX(100%);
+		transition: right .5s ease-in-out, transform .5s ease-in-out;
+
+		&:hover {
+			right: 0;
+			transform: translateX(0%);
+		}
+	}
+}
 
 .support svg {
-  fill: #ffffff;
-  height: 30px;
-  margin-right: 5px;
-  padding: 5px;
-  width: 30px; }
+	fill: #ffffff;
+	height: 30px;
+	margin-right: 5px;
+	padding: 5px;
+	width: 30px;
+}
 
 .unsupported {
-  display: block; }
-  @supports (display: grid) {
-    .unsupported {
-      display: none; } }
+	display: block;
+	
+	@supports ( display: grid ) {
+		display: none;
+	}
+}
 
 .supported {
-  display: none; }
-  @supports (display: grid) {
-    .supported {
-      display: block; } }
-
+	display: none;
+	
+	@supports ( display: grid ) {
+		display: block;
+	}
+}
+*/
 /* averta-light */
 @font-face {
   font-family: 'Averta';
@@ -291,56 +333,110 @@ body {
 
 /* if selector is wider than the screensize we are calling */
 /* if selector is wider than the screensize we are calling */
-/* autoprefixer grid: autoplace */
 body {
   height: 100%;
   margin: 0; }
 
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+.grid-display {
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  height: 100vh;
+  margin: 0; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* then write out a nested Media Query that will target that value as our min-width */
+@media (min-width: 320px) {
+  /* write CSS within this mixin that would apply to only this breakpoint or above */
+  .grid-column:nth-child(-n+4) {
+    display: block; } }
+
+/* if the screen-size we are requesting doesn't exist, then tell me when it is compiled */
 .container {
   display: -ms-grid;
   display: grid;
-      -ms-grid-rows: 1fr 24px 5fr 24px 1fr;
-      grid-template-rows: 1fr 5fr 1fr;
-      -ms-grid-columns: 2fr 24px 5fr 24px 3fr;
-      grid-template-columns: 2fr 5fr 3fr;
-      grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+  -ms-grid-rows: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  -ms-grid-columns: 2fr 5fr 3fr;
+  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
   grid-gap: 24px;
   height: 100vh; }
   @media (max-width: 768px) {
     .container {
-          -ms-grid-rows: 1fr 1fr 5fr 1fr;
-          grid-template-rows: 1fr 1fr 5fr 1fr;
-          -ms-grid-columns: 2fr 5fr 3fr;
-          grid-template-columns: 2fr 5fr 3fr;
-          grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
+      -ms-grid-rows: 1fr 1fr 5fr 1fr;
+      grid-template-rows: 1fr 1fr 5fr 1fr;
+      -ms-grid-columns: 2fr 5fr 3fr;
+      grid-template-columns: 2fr 5fr 3fr;
+      grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
   @media (max-width: 480px) {
     .container {
       display: block; } }
   .container header {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
+    -ms-grid-column-span: 3;
     grid-area: header;
     background-color: teal; }
   .container nav.main-nav {
-    -ms-grid-row: 3;
+    -ms-grid-row: 2;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     grid-area: nav;
     background-color: tomato; }
-  .container main {
+  .container section.main {
     -ms-grid-row: 3;
-    -ms-grid-column: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
     grid-area: main;
     background-color: lightblue; }
   .container aside {
     -ms-grid-row: 3;
-    -ms-grid-column: 5;
+    -ms-grid-column: 1;
     grid-area: aside;
     background-color: orange; }
   .container footer {
-    -ms-grid-row: 5;
+    -ms-grid-row: 4;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
+    -ms-grid-column-span: 3;
     grid-area: footer; }
 
 /*
@@ -358,59 +454,67 @@ body {
 		}
 	}
 }*/
+/*
 .support {
-  align-items: center;
-  background: tomato;
-  color: #fff;
-  display: flex;
-  font-size: .9rem;
-  padding: 0 10px 0 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: auto;
-  z-index: 100; }
-  .support a {
-    color: #fff;
-    padding: 10px 0;
-    text-decoration: none; }
-  @supports (display: grid) {
-    .support {
-      background: #058a6e;
-      right: 40px;
-      -webkit-transform: translateX(100%);
-              transform: translateX(100%);
-      transition: right .5s ease-in-out, -webkit-transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out, -webkit-transform .5s ease-in-out; }
-      .support:hover {
-        right: 0;
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%); } }
+	align-items: center;
+	background: tomato;
+	color: #fff;
+	display: flex;
+	font-size: .9rem;
+	padding: 0 10px 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: auto;
+	z-index: 100;
+
+	a { 
+		color: #fff;
+		padding: 10px 0;
+		text-decoration: none;
+	}
+	
+	@supports ( display: grid ) {
+		background: rgb(5,138,110);
+		right: 40px;
+		transform: translateX(100%);
+		transition: right .5s ease-in-out, transform .5s ease-in-out;
+
+		&:hover {
+			right: 0;
+			transform: translateX(0%);
+		}
+	}
+}
 
 .support svg {
-  fill: #ffffff;
-  height: 30px;
-  margin-right: 5px;
-  padding: 5px;
-  width: 30px; }
+	fill: #ffffff;
+	height: 30px;
+	margin-right: 5px;
+	padding: 5px;
+	width: 30px;
+}
 
 .unsupported {
-  display: block; }
-  @supports (display: grid) {
-    .unsupported {
-      display: none; } }
+	display: block;
+	
+	@supports ( display: grid ) {
+		display: none;
+	}
+}
 
 .supported {
-  display: none; }
-  @supports (display: grid) {
-    .supported {
-      display: block; } }
-
+	display: none;
+	
+	@supports ( display: grid ) {
+		display: block;
+	}
+}
+*/
 .six-footer {
   background: #383838;
   color: #fff;
-  height: 400px;
+  height: 440px;
   /* pour IE */
   padding: 10px 0;
   text-align: center; }
@@ -432,18 +536,21 @@ body {
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightblue;
         width: 960px; } }
     @media (min-width: 1200px) {
       .six-footer nav,
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightgreen;
         width: 1152px; } }
     @media (min-width: 1440px) {
       .six-footer nav,
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightsteelblue;
         width: 1392px; } }
   .six-footer nav {
     margin: 0 auto 10px; }
@@ -453,16 +560,8 @@ body {
       text-align: left;
       text-transform: uppercase; }
     .six-footer nav ol {
-      /*display: flex;
-      justify-content: space-between;*/ }
-      @supports (display: grid) {
-        .six-footer nav ol {
-          display: -ms-grid;
-          display: grid;
-          grid-area: footer-nav;
-          grid-gap: 24px;
-          -ms-grid-columns: (4fr)[6];
-              grid-template-columns: repeat(6, 4fr); } }
+      display: flex;
+      justify-content: space-between; }
       .six-footer nav ol li {
         padding-right: 24px;
         width: calc(100%/6); }
@@ -518,89 +617,3 @@ li {
 
 hr {
   border-top: 1px solid #666666; }
-
-/*
-.main-grid {
-  background: lightpink;
-  display: grid;
-}
-
-.header {
-  background-color: lightyellow;
-  grid-area: header;
-}
-
-.footer {
-  background-color: lightblue;
-  grid-area: footer;
-}
-
-.main {
-  background-color: lightgrey;
-  grid-area: main;
-}
-
-.sidebar {
-  background-color: lightcoral;
-  grid-area: sidebar;
-}
-
-@media only screen and (min-width: 993px) and (max-width: 1200px) {
-  .main-grid {
-    grid-template-columns: repeat(24, 1fr);
-    grid-template-rows: 100px 1fr 200px;
-    grid-gap: 24px 24px;
-    height: 1000px;
-    width: 1152px;
-  }
-
-  .header {
-    height: 100px;
-  }
-
-  .footer {
-    height: 200px;
-  }
-
-  .main {
-    grid-area: 2 / 6 / 2 / 18;
-    height: 100%;
-  }
-
-  .sidebar {
-    grid-area: 2 / 1 / 2 / 5;
-    height: 100%;
-  }
-}
-
-@media only screen and (min-width:1440px) {
-  .main-grid {
-    grid-template-areas:
-     "header"
-     "sidebar"
-     "main"
-     "footer"
-    ;
-    grid-gap: 24px 24px;
-    height: 1000px;
-    width: 1392px;
-  }
-
-  .header {
-    height: 100px;
-  }
-
-  .footer {
-    height: 200px;
-  }
-
-  .main {
-    grid-area: 2 / 5 / 2 / 18;
-    height: 100%;
-  }
-
-  .sidebar {
-    grid-area: 2 / 1 / 2 / 5;
-    height: 100%;
-  }
-}*/

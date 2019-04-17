@@ -1,76 +1,106 @@
 /* if selector is wider than the screensize we are calling */
-/* if selector is wider than the screensize we are calling */
-/* autoprefixer grid: autoplace */
+/*
+$columnsSize: (
+	md: 56px,
+  lg: 24px,
+  xl: 34px
+);
+*/
 body {
   height: 100%;
   margin: 0; }
 
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* Debugging */
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* Debugging */
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* Debugging */
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* Debugging */
+/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
+/* Debugging */
+.grid-display {
+  grid-template-rows: 1;
+  grid-template-columns: repeat(, 1fr);
+  margin: 0; }
+
+.grid-display {
+  grid-template-rows: 1;
+  grid-template-columns: repeat(, 1fr);
+  margin: 0; }
+
+.grid-display {
+  grid-template-rows: 1;
+  grid-template-columns: repeat(, 1fr);
+  margin: 0; }
+
+.grid-display {
+  grid-template-rows: 1;
+  grid-template-columns: repeat(, 1fr);
+  margin: 0; }
+
+.grid-display {
+  grid-template-rows: 1;
+  grid-template-columns: repeat(, 1fr);
+  margin: 0; }
+
+.grid-display {
+  display: grid;
+  height: 100vh;
+  position: relative; }
+  .grid-display .grid-column {
+    display: none;
+    background-color: lightgreen; }
+
 .container {
   display: -ms-grid;
   display: grid;
-      -ms-grid-rows: 1fr 24px 5fr 24px 1fr;
-      grid-template-rows: 1fr 5fr 1fr;
-      -ms-grid-columns: 2fr 24px 5fr 24px 3fr;
-      grid-template-columns: 2fr 5fr 3fr;
-      grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+  -ms-grid-rows: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  -ms-grid-columns: 2fr 5fr 3fr;
+  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
   grid-gap: 24px;
   height: 100vh; }
   @media (max-width: 768px) {
     .container {
-          -ms-grid-rows: 1fr 1fr 5fr 1fr;
-          grid-template-rows: 1fr 1fr 5fr 1fr;
-          -ms-grid-columns: 2fr 5fr 3fr;
-          grid-template-columns: 2fr 5fr 3fr;
-          grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
+      -ms-grid-rows: 1fr 1fr 5fr 1fr;
+      grid-template-rows: 1fr 1fr 5fr 1fr;
+      -ms-grid-columns: 2fr 5fr 3fr;
+      grid-template-columns: 2fr 5fr 3fr;
+      grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
   @media (max-width: 480px) {
     .container {
       display: block; } }
   .container header {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
+    -ms-grid-column-span: 3;
     grid-area: header;
     background-color: teal; }
   .container nav.main-nav {
-    -ms-grid-row: 3;
+    -ms-grid-row: 2;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     grid-area: nav;
     background-color: tomato; }
-  .container main {
+  .container section.main {
     -ms-grid-row: 3;
-    -ms-grid-column: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
     grid-area: main;
     background-color: lightblue; }
   .container aside {
     -ms-grid-row: 3;
-    -ms-grid-column: 5;
+    -ms-grid-column: 1;
     grid-area: aside;
     background-color: orange; }
   .container footer {
-    -ms-grid-row: 5;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 5;
-    grid-area: footer; }
-  @media (max-width: 768px) {
-    .container header {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3; }
-    .container nav.main-nav {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 3; }
-    .container main {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2; }
-    .container aside {
-    -ms-grid-row: 3;
-    -ms-grid-column: 3; }
-    .container footer {
     -ms-grid-row: 4;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 3; } }
+    -ms-grid-column-span: 3;
+    grid-area: footer; }
 
 /*
 	@include bp('lg') {
@@ -87,59 +117,67 @@ body {
 		}
 	}
 }*/
+/*
 .support {
-  align-items: center;
-  background: tomato;
-  color: #fff;
-  display: flex;
-  font-size: .9rem;
-  padding: 0 10px 0 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: auto;
-  z-index: 100; }
-  .support a {
-    color: #fff;
-    padding: 10px 0;
-    text-decoration: none; }
-  @supports (display: grid) {
-    .support {
-      background: #058a6e;
-      right: 40px;
-      -webkit-transform: translateX(100%);
-              transform: translateX(100%);
-      transition: right .5s ease-in-out, -webkit-transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out;
-      transition: right .5s ease-in-out, transform .5s ease-in-out, -webkit-transform .5s ease-in-out; }
-      .support:hover {
-        right: 0;
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%); } }
+	align-items: center;
+	background: tomato;
+	color: #fff;
+	display: flex;
+	font-size: .9rem;
+	padding: 0 10px 0 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: auto;
+	z-index: 100;
+
+	a { 
+		color: #fff;
+		padding: 10px 0;
+		text-decoration: none;
+	}
+	
+	@supports ( display: grid ) {
+		background: rgb(5,138,110);
+		right: 40px;
+		transform: translateX(100%);
+		transition: right .5s ease-in-out, transform .5s ease-in-out;
+
+		&:hover {
+			right: 0;
+			transform: translateX(0%);
+		}
+	}
+}
 
 .support svg {
-  fill: #ffffff;
-  height: 30px;
-  margin-right: 5px;
-  padding: 5px;
-  width: 30px; }
+	fill: #ffffff;
+	height: 30px;
+	margin-right: 5px;
+	padding: 5px;
+	width: 30px;
+}
 
 .unsupported {
-  display: block; }
-  @supports (display: grid) {
-    .unsupported {
-      display: none; } }
+	display: block;
+	
+	@supports ( display: grid ) {
+		display: none;
+	}
+}
 
 .supported {
-  display: none; }
-  @supports (display: grid) {
-    .supported {
-      display: block; } }
-
+	display: none;
+	
+	@supports ( display: grid ) {
+		display: block;
+	}
+}
+*/
 .six-footer {
   background: #383838;
   color: #fff;
-  height: 400px;
+  height: 440px;
   /* pour IE */
   padding: 10px 0;
   text-align: center; }
@@ -161,18 +199,21 @@ body {
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightblue;
         width: 960px; } }
     @media (min-width: 1200px) {
       .six-footer nav,
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightgreen;
         width: 1152px; } }
     @media (min-width: 1440px) {
       .six-footer nav,
       .six-footer hr,
       .six-footer .legal {
         /* write CSS within this mixin that would apply to only this breakpoint or above */
+        background: lightsteelblue;
         width: 1392px; } }
   .six-footer nav {
     margin: 0 auto 10px; }
@@ -182,16 +223,8 @@ body {
       text-align: left;
       text-transform: uppercase; }
     .six-footer nav ol {
-      /*display: flex;
-      justify-content: space-between;*/ }
-      @supports (display: grid) {
-        .six-footer nav ol {
-          display: -ms-grid;
-          display: grid;
-          grid-area: footer-nav;
-          grid-gap: 24px;
-          -ms-grid-columns: (4fr)[6];
-              grid-template-columns: repeat(6, 4fr); } }
+      display: flex;
+      justify-content: space-between; }
       .six-footer nav ol li {
         padding-right: 24px;
         width: calc(100%/6); }

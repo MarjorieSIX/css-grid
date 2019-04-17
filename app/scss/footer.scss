@@ -5,7 +5,7 @@
 .six-footer {
   background: $graphite50;
   color: $white;
-  height: 400px; /* pour IE */
+  height: 440px; /* pour IE */
   padding: 10px 0;
   text-align: center;
 
@@ -14,12 +14,15 @@
   .legal {
     width: 100%;
     @include bp('md') {
+      background: lightblue;
       width: map-get($grid, md);
     }
     @include bp('lg') {
+      background: lightgreen;
       width: map-get($grid, lg);
     }
     @include bp('xl') {
+      background: lightsteelblue;
       width: map-get($grid, xl);
     }
   }
@@ -33,14 +36,8 @@
       text-transform: uppercase;
     }
     ol {
-      /*display: flex;
-      justify-content: space-between;*/
-      @supports (display: grid) {
-        display: grid;
-        grid-area: footer-nav;
-        grid-gap: 24px;
-        grid-template-columns: repeat(6, 4fr);
-      }
+      display: flex;
+      justify-content: space-between;
       li {
         padding-right: 24px;
         width: calc(100%/6);
