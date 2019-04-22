@@ -1,114 +1,110 @@
-// Media Queries
-
-$xs: (
- breakpoint: 320px,
- grid: 100%,
- grid-columns: 4,
- grid-gutters: 12px
-);
-$sm: (
- breakpoint: 768px,
- grid: 100%,
- grid-columns: 12,
- grid-gutters: 12px
-);
-$md: (
- breakpoint: 992px,
- grid: 960px,
- grid-columns: 12,
- grid-gutters: 24px
-);
-$lg: (
- breakpoint: 1200px,
- grid: 1152px,
- grid-columns: 24,
- grid-gutters: 24px
-);
-$xl: (
- breakpoint: 1440px,
- grid: 1392px,
- grid-columns: 24,
- grid-gutters: 24px
-);
-
-
-$breakpoints: (
-  xs: 320px,
-  sm: 768px,
-  md: 992px,
-  lg: 1200px,
-  xl: 1440px
-);
+@import "breakpoints";
 
 $grid: (
-	xs: 100%,
-	sm: 100%,
-  md: 960px,
-  lg: 1152px,
-  xl: 1392px
-);
+  (
+    xs,
+    map-get($breakpoints, xs),
+    100%,
+    4,
+    12px,
+    12px
+  ), 
+  (
+    sm,
+    map-get($breakpoints, sm),
+    100%,
+    12,
+    12px,
+    12px
+  ),
+  (
+    md,
+    map-get($breakpoints, md),
+    960px,
+    12,
+    24px,
+    auto
+  ),
+  (
+    lg,
+    map-get($breakpoints, lg),
+    1152px,
+    24,
+    24px,
+    auto
+  ),
+  (
+    xl,
+    map-get($breakpoints, xl),
+    1392px,
+    24,
+    24px,
+    auto
+  )
+) !default;
 
-$columns: (
-	xs: 4,
-	sm: 12,
-	md: 12,
-  lg: 24,
-  xl: 24
-);
+.grid-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  
+  .grid-size-name {
+    background: black;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+  
+    @each $bp-name, $breakpoint in $grid {
+      @media (min-width: #{$breakpoint}) {
+        &:before {
+          color: white;
+          content: "#{$bp-name}";
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 
-/*
-$columnsSize: (
-	md: 56px,
-  lg: 24px,
-  xl: 34px
-);
-*/
-$gutters: (
-	xs: 12px,
-	sm: 12px,
-	md: 24px,
-  lg: 24px,
-  xl: 24px
-);
+  .grid-display {
+    align-content: start;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1;
+    grid-template-rows: 1;
+    height: 100vh;
+    justify-content: center;
+    pointer-events: none;
+    position: fixed;
 
-
-body {
-	height: 100%;
-	margin: 0;
+    .grid-column {
+      display: none;
+      background-color: lightgreen;
+      height: 100vh;
+      position: relative;
+    }
+    
+    @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
+      @media (min-width: #{$breakpoint}) {
+        grid-gap: #{$grid-gutters};
+        -ms-grid-columns: repeat(#{$grid-columns}, 1fr);
+        grid-template-columns: repeat(#{$grid-columns}, 1fr);
+        margin: 0 #{$grid-margins};
+        width: #{$grid-width};
+      
+        .grid-column:nth-child(-n+#{$grid-columns}) {
+          display: -ms-grid;
+          display: grid;
+        }
+      }
+    }
+  }
 }
-
-@each $screen-size in $columns {
-	@include bp('$screen-size') {
-		.grid-column:nth-child(-n+$column) {
-			display: block;
-		}
-	}
-}
-
-@each $screen-size in $breakpoints {
-	.grid-display {
-		grid-gap: map-get($gutters, $screen-size);
-		grid-template-rows: 1;
-		grid-template-columns: repeat(map-get($columns, $screen-size), 1fr);
-		margin: 0 map-get($gutters, $screen-size);
-		width: map-get($grid, $screen-size);
-	}
-	
-}
-
-.grid-display {
-	display: grid;
-	height: 100vh;
-	position: relative;
-
-	.grid-column {
-		display: none;
-		background-color: lightgreen;
-	}
-}
-
-
-
 
 
 .container {
@@ -122,9 +118,17 @@ body {
     "header header header"
     "nav main aside"
     "footer footer footer";
-  grid-gap: 24px;        
+  // grid-gap: 24px;        
 	height: 100vh;
-	
+  
+  @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
+    @media (min-width: #{$breakpoint}) {
+      grid-gap: #{$grid-gutters};
+      margin: 0 #{$grid-margins};
+      width: #{$grid-width};
+    }
+  }
+
   @media(max-width: 768px){
 		-ms-grid-rows: 1fr 1fr 5fr 1fr;
 		grid-template-rows: 1fr 1fr 5fr 1fr;
@@ -179,77 +183,3 @@ body {
     grid-area: footer;
   }
 }
-/*
-	@include bp('lg') {
-		justify-content: flex-end;
-	}
-	
-	@supports (display: grid) {
-		display: grid;
-		grid-gap: 1rem;
-		grid-template-columns: 1fr 1fr;
-		
-		@include bp('lg') {
-			grid-template-columns: repeat(24, 1fr);
-		}
-	}
-}*/
-
-
-/*
-.support {
-	align-items: center;
-	background: tomato;
-	color: #fff;
-	display: flex;
-	font-size: .9rem;
-	padding: 0 10px 0 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	width: auto;
-	z-index: 100;
-
-	a { 
-		color: #fff;
-		padding: 10px 0;
-		text-decoration: none;
-	}
-	
-	@supports ( display: grid ) {
-		background: rgb(5,138,110);
-		right: 40px;
-		transform: translateX(100%);
-		transition: right .5s ease-in-out, transform .5s ease-in-out;
-
-		&:hover {
-			right: 0;
-			transform: translateX(0%);
-		}
-	}
-}
-
-.support svg {
-	fill: #ffffff;
-	height: 30px;
-	margin-right: 5px;
-	padding: 5px;
-	width: 30px;
-}
-
-.unsupported {
-	display: block;
-	
-	@supports ( display: grid ) {
-		display: none;
-	}
-}
-
-.supported {
-	display: none;
-	
-	@supports ( display: grid ) {
-		display: block;
-	}
-}
-*/

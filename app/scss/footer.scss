@@ -1,10 +1,10 @@
+@import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh";
 @import "breakpoints";
-@import "colors";
 @import "grid";
 
 .six-footer {
-  background: $graphite50;
-  color: $white;
+  background: '$color-graphite-50';
+  color: '$color-white';
   height: 440px; /* pour IE */
   padding: 10px 0;
   text-align: center;
@@ -13,24 +13,24 @@
   hr,
   .legal {
     width: 100%;
-    @include bp('md') {
+    /*@include bp('md') {
       background: lightblue;
-      width: map-get($grid, md);
+      width: map-get($grid-width, md);
     }
     @include bp('lg') {
       background: lightgreen;
-      width: map-get($grid, lg);
+      width: map-get($grid-width, lg);
     }
     @include bp('xl') {
       background: lightsteelblue;
-      width: map-get($grid, xl);
-    }
+      width: map-get($grid-width, xl);
+    }*/
   }
 
   nav {
     margin: 0 auto 10px;
     h3 {
-      color: $white;
+      color: '$color-white';
       margin-bottom: 10px;
       text-align: left;
       text-transform: uppercase;
@@ -53,7 +53,7 @@
       text-align: left;
       width: 100%;
       a {
-        color: $white;
+        color: '$color-white';
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -82,7 +82,7 @@
         content: "";
       }
       a {
-        color: $white;
+        color: '$color-white';
         text-decoration: none;
         &:hover {
           text-decoration: underline;

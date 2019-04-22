@@ -1,7 +1,7 @@
+@import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh"; // Design tokens
 @import "reset";
 @import "breakpoints";
 @import "grid";
-@import "colors";
 @import "fonts";
 
 @import "footer";
@@ -9,9 +9,11 @@
 
 
 body {
-  font-family: 'Averta', Arial, Helvetica, sans-serif;
+  font-family: '$font-averta-name', Arial, Helvetica, sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 h1,
@@ -22,9 +24,9 @@ h5,
 h6,
 p,
 li {
-  font-family: 'Averta', Arial, Helvetica, sans-serif;
+  font-family: '$font-averta-name', Arial, Helvetica, sans-serif;
 }
 
 hr {
-  border-top: 1px solid $graphite40;
+  border-top: 1px solid '$color-graphite-40';
 }

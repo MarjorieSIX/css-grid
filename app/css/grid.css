@@ -1,61 +1,114 @@
 /* if selector is wider than the screensize we are calling */
-body {
-  height: 100%;
-  margin: 0; }
-
-.grid-display {
-  display: grid;
-  grid-template-columns: repeat(, 1fr);
+.grid-container {
+  display: flex;
   height: 100vh;
-  margin: 0; }
-  .grid-display .grid-column {
-    display: none;
-    background-color: lightgreen; }
+  justify-content: center;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%; }
+  .grid-container .grid-size-name {
+    background: black;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    z-index: 1; }
+    @media (min-width: 320px) {
+      .grid-container .grid-size-name:before {
+        color: white;
+        content: "xs";
+        font-weight: bold;
+        text-transform: uppercase; } }
+    @media (min-width: 768px) {
+      .grid-container .grid-size-name:before {
+        color: white;
+        content: "sm";
+        font-weight: bold;
+        text-transform: uppercase; } }
+    @media (min-width: 992px) {
+      .grid-container .grid-size-name:before {
+        color: white;
+        content: "md";
+        font-weight: bold;
+        text-transform: uppercase; } }
+    @media (min-width: 1200px) {
+      .grid-container .grid-size-name:before {
+        color: white;
+        content: "lg";
+        font-weight: bold;
+        text-transform: uppercase; } }
+    @media (min-width: 1440px) {
+      .grid-container .grid-size-name:before {
+        color: white;
+        content: "xl";
+        font-weight: bold;
+        text-transform: uppercase; } }
+  .grid-container .grid-display {
+    align-content: start;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1;
+    grid-template-rows: 1;
+    height: 100vh;
+    justify-content: center;
+    pointer-events: none;
+    position: fixed; }
+    .grid-container .grid-display .grid-column {
+      display: none;
+      background-color: lightgreen;
+      height: 100vh;
+      position: relative; }
+    @media (min-width: 320px) {
+      .grid-container .grid-display {
+        grid-gap: 12px;
+        -ms-grid-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0 12px;
+        width: 100%; }
+        .grid-container .grid-display .grid-column:nth-child(-n+4) {
+          display: -ms-grid;
+          display: grid; } }
+    @media (min-width: 768px) {
+      .grid-container .grid-display {
+        grid-gap: 12px;
+        -ms-grid-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
+        margin: 0 12px;
+        width: 100%; }
+        .grid-container .grid-display .grid-column:nth-child(-n+12) {
+          display: -ms-grid;
+          display: grid; } }
+    @media (min-width: 992px) {
+      .grid-container .grid-display {
+        grid-gap: 24px;
+        -ms-grid-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
+        margin: 0 auto;
+        width: 960px; }
+        .grid-container .grid-display .grid-column:nth-child(-n+12) {
+          display: -ms-grid;
+          display: grid; } }
+    @media (min-width: 1200px) {
+      .grid-container .grid-display {
+        grid-gap: 24px;
+        -ms-grid-columns: repeat(24, 1fr);
+        grid-template-columns: repeat(24, 1fr);
+        margin: 0 auto;
+        width: 1152px; }
+        .grid-container .grid-display .grid-column:nth-child(-n+24) {
+          display: -ms-grid;
+          display: grid; } }
+    @media (min-width: 1440px) {
+      .grid-container .grid-display {
+        grid-gap: 24px;
+        -ms-grid-columns: repeat(24, 1fr);
+        grid-template-columns: repeat(24, 1fr);
+        margin: 0 auto;
+        width: 1392px; }
+        .grid-container .grid-display .grid-column:nth-child(-n+24) {
+          display: -ms-grid;
+          display: grid; } }
 
-.grid-display {
-  display: grid;
-  grid-template-columns: repeat(, 1fr);
-  height: 100vh;
-  margin: 0; }
-  .grid-display .grid-column {
-    display: none;
-    background-color: lightgreen; }
-
-.grid-display {
-  display: grid;
-  grid-template-columns: repeat(, 1fr);
-  height: 100vh;
-  margin: 0; }
-  .grid-display .grid-column {
-    display: none;
-    background-color: lightgreen; }
-
-.grid-display {
-  display: grid;
-  grid-template-columns: repeat(, 1fr);
-  height: 100vh;
-  margin: 0; }
-  .grid-display .grid-column {
-    display: none;
-    background-color: lightgreen; }
-
-.grid-display {
-  display: grid;
-  grid-template-columns: repeat(, 1fr);
-  height: 100vh;
-  margin: 0; }
-  .grid-display .grid-column {
-    display: none;
-    background-color: lightgreen; }
-
-/* and if our map that we named $breakpoints includes values (we called them $screen-size) */
-/* then write out a nested Media Query that will target that value as our min-width */
-@media (min-width: 320px) {
-  /* write CSS within this mixin that would apply to only this breakpoint or above */
-  .grid-column:nth-child(-n+4) {
-    display: block; } }
-
-/* if the screen-size we are requesting doesn't exist, then tell me when it is compiled */
 .container {
   display: -ms-grid;
   display: grid;
@@ -64,8 +117,32 @@ body {
   -ms-grid-columns: 2fr 5fr 3fr;
   grid-template-columns: 2fr 5fr 3fr;
   grid-template-areas: "header header header" "nav main aside" "footer footer footer";
-  grid-gap: 24px;
   height: 100vh; }
+  @media (min-width: 320px) {
+    .container {
+      grid-gap: 12px;
+      margin: 0 12px;
+      width: 100%; } }
+  @media (min-width: 768px) {
+    .container {
+      grid-gap: 12px;
+      margin: 0 12px;
+      width: 100%; } }
+  @media (min-width: 992px) {
+    .container {
+      grid-gap: 24px;
+      margin: 0 auto;
+      width: 960px; } }
+  @media (min-width: 1200px) {
+    .container {
+      grid-gap: 24px;
+      margin: 0 auto;
+      width: 1152px; } }
+  @media (min-width: 1440px) {
+    .container {
+      grid-gap: 24px;
+      margin: 0 auto;
+      width: 1392px; } }
   @media (max-width: 768px) {
     .container {
       -ms-grid-rows: 1fr 1fr 5fr 1fr;
@@ -104,76 +181,3 @@ body {
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-area: footer; }
-
-/*
-	@include bp('lg') {
-		justify-content: flex-end;
-	}
-	
-	@supports (display: grid) {
-		display: grid;
-		grid-gap: 1rem;
-		grid-template-columns: 1fr 1fr;
-		
-		@include bp('lg') {
-			grid-template-columns: repeat(24, 1fr);
-		}
-	}
-}*/
-/*
-.support {
-	align-items: center;
-	background: tomato;
-	color: #fff;
-	display: flex;
-	font-size: .9rem;
-	padding: 0 10px 0 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	width: auto;
-	z-index: 100;
-
-	a { 
-		color: #fff;
-		padding: 10px 0;
-		text-decoration: none;
-	}
-	
-	@supports ( display: grid ) {
-		background: rgb(5,138,110);
-		right: 40px;
-		transform: translateX(100%);
-		transition: right .5s ease-in-out, transform .5s ease-in-out;
-
-		&:hover {
-			right: 0;
-			transform: translateX(0%);
-		}
-	}
-}
-
-.support svg {
-	fill: #ffffff;
-	height: 30px;
-	margin-right: 5px;
-	padding: 5px;
-	width: 30px;
-}
-
-.unsupported {
-	display: block;
-	
-	@supports ( display: grid ) {
-		display: none;
-	}
-}
-
-.supported {
-	display: none;
-	
-	@supports ( display: grid ) {
-		display: block;
-	}
-}
-*/

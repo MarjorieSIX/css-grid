@@ -1,28 +1,29 @@
+@import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh";
 /* averta-light */
 @font-face {
-  font-family: 'Averta';
+  font-family: '$font-averta-name';
   font-style: normal;
-  font-weight: 300;
-  src: local("Averta"), local("Averta-Light"), url("../fonts/averta-light.woff2") format("woff2"), url("../fonts/averta-light.woff") format("woff"); }
+  font-weight: '$font-averta-weight-light';
+  src: local("$font-averta-name"), local("Averta-Light"), "$font-averta-url-light"; }
 
 /* averta-regular */
 @font-face {
-  font-family: 'Averta';
+  font-family: '$font-averta-name';
   font-style: normal;
-  font-weight: 400;
-  src: local("Averta"), local("Averta-Regular"), url("../fonts/averta-regular.woff2") format("woff2"), url("../fonts/averta-regular.woff") format("woff"); }
+  font-weight: '$font-averta-weight-regular';
+  src: local("$font-averta-name"), local("Averta-Regular"), "$font-averta-url-regular"; }
 
 /* averta-semibold */
 @font-face {
-  font-family: 'Averta';
+  font-family: '$font-averta-name';
   font-style: normal;
-  font-weight: 500;
+  font-weight: '$font-averta-weight-semibold';
   /* pour N3-UX devrait etre 600 */
-  src: local("Averta"), local("Averta-Semibold"), url("../fonts/averta-semibold.woff2") format("woff2"), url("../fonts/averta-semibold.woff") format("woff"); }
+  src: local("$font-averta-name"), local("Averta-Semibold"), "$font-averta-url-semibold"; }
 
 /* averta-bold */
 @font-face {
-  font-family: 'Averta';
+  font-family: '$font-averta-name';
   font-style: normal;
-  font-weight: 700;
-  src: local("Averta"), local("Averta-Bold"), url("../fonts/averta-bold.woff2") format("woff2"), url("../fonts/averta-bold.woff") format("woff"); }
+  font-weight: '$font-averta-weight-bold';
+  src: local("$font-averta-name"), local("Averta-Bold"), "$font-averta-url-bold"; }
