@@ -14,46 +14,35 @@
 
 <body>
   <script>
-    let grid = document.getElementsByClassName("grid-container");
+    var currentKeyCode = "";
     document.addEventListener("keydown", (function(e) {
-      if (event.keyCode == 83 && event.keyCode == 88) {
-        // 83 = S, 88 = X
-        grid.classList.style.opacity = '1.0';
-        console.log("You've pressed this key: " + event.which);
-        return;
-     }   
+      if (e.key === "s") {
+        currentKeyCode = e.key;
+      }
+    }));
+    document.addEventListener("keyup", (function(e) {
+      var grid = document.querySelector(".grid-container");
+      if (e.key === "x" && currentKeyCode === 's') {
+        grid.classList.toggle("active");
+      }
+      currentKeyCode = "";
     }));
   </script>
 
   <div class="grid-container">
     <div class="grid-size-name"></div>
     <div class="grid-display">
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
-        <div class="grid-column"></div>
+      <script>
+        for (let i = 0; i < 24; i ++) {
+          var e = document.createElement("div");
+          e.setAttribute("class", "grid-column");
+          document.querySelector(".grid-display").appendChild(e);
+        }
+      </script>
     </div>
   </div>
+
+
 
   <div class="container">
     

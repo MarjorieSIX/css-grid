@@ -135,8 +135,12 @@ table {
   overflow: hidden;
   position: absolute;
   width: 100%; }
+  .grid-container.active {
+    opacity: 1; }
+  .grid-container.hidden {
+    opacity: 0; }
   .grid-container .grid-size-name {
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     height: 30px;
     text-align: center;
     width: 100%;
@@ -173,6 +177,7 @@ table {
         text-transform: uppercase; } }
   .grid-container .grid-display {
     align-content: start;
+    counter-reset: grid;
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: 1;
@@ -186,6 +191,13 @@ table {
       background-color: lightgreen;
       height: 100vh;
       position: relative; }
+      .grid-container .grid-display .grid-column:before {
+        color: white;
+        counter-increment: grid;
+        content: counters(grid, "");
+        font-weight: bold;
+        padding-top: 30px;
+        text-align: center; }
     @media (min-width: 320px) {
       .grid-container .grid-display {
         grid-gap: 12px;
@@ -349,8 +361,12 @@ table {
   overflow: hidden;
   position: absolute;
   width: 100%; }
+  .grid-container.active {
+    opacity: 1; }
+  .grid-container.hidden {
+    opacity: 0; }
   .grid-container .grid-size-name {
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     height: 30px;
     text-align: center;
     width: 100%;
@@ -387,6 +403,7 @@ table {
         text-transform: uppercase; } }
   .grid-container .grid-display {
     align-content: start;
+    counter-reset: grid;
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: 1;
@@ -400,6 +417,13 @@ table {
       background-color: lightgreen;
       height: 100vh;
       position: relative; }
+      .grid-container .grid-display .grid-column:before {
+        color: white;
+        counter-increment: grid;
+        content: counters(grid, "");
+        font-weight: bold;
+        padding-top: 30px;
+        text-align: center; }
     @media (min-width: 320px) {
       .grid-container .grid-display {
         grid-gap: 12px;

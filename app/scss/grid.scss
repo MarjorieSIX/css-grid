@@ -52,8 +52,11 @@ $grid: (
   position: absolute;
   width: 100%;
   
+  &.active { opacity: 1; }
+  &.hidden { opacity: 0; }
+
   .grid-size-name {
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     height: 30px;
     text-align: center;
     width: 100%;
@@ -73,6 +76,7 @@ $grid: (
 
   .grid-display {
     align-content: start;
+    counter-reset: grid;
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: 1;
@@ -87,6 +91,14 @@ $grid: (
       background-color: lightgreen;
       height: 100vh;
       position: relative;
+      &:before {
+        color: white;
+        counter-increment: grid;
+        content: counters(grid,"");
+        font-weight: bold;
+        padding-top: 30px;
+        text-align: center;
+      }
     }
     
     @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
