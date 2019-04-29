@@ -8,7 +8,7 @@
   opacity: 0;
   overflow: hidden;
   position: absolute;
-  width: 100%; }
+  width: calc(100% - 12px); }
   .grid-container.active {
     opacity: 1; }
   .grid-container.hidden {
@@ -59,7 +59,8 @@
     height: 100vh;
     justify-content: center;
     pointer-events: none;
-    position: fixed; }
+    position: fixed;
+    width: calc(100% - 12px); }
     .grid-container .grid-display .grid-column {
       display: none;
       background-color: lightgreen;
@@ -77,51 +78,43 @@
         grid-gap: 12px;
         -ms-grid-columns: repeat(4, 1fr);
         grid-template-columns: repeat(4, 1fr);
-        margin: 0 12px;
-        width: 100%; }
-        .grid-container .grid-display .grid-column:nth-child(-n+4) {
-          display: -ms-grid;
-          display: grid; } }
+        max-width: 100%; } }
     @media (min-width: 768px) {
       .grid-container .grid-display {
         grid-gap: 12px;
         -ms-grid-columns: repeat(12, 1fr);
         grid-template-columns: repeat(12, 1fr);
-        margin: 0 12px;
-        width: 100%; }
-        .grid-container .grid-display .grid-column:nth-child(-n+12) {
-          display: -ms-grid;
-          display: grid; } }
+        max-width: 100%; } }
     @media (min-width: 992px) {
       .grid-container .grid-display {
         grid-gap: 24px;
         -ms-grid-columns: repeat(12, 1fr);
         grid-template-columns: repeat(12, 1fr);
-        margin: 0 auto;
-        width: 960px; }
-        .grid-container .grid-display .grid-column:nth-child(-n+12) {
-          display: -ms-grid;
-          display: grid; } }
+        max-width: 960px; } }
     @media (min-width: 1200px) {
       .grid-container .grid-display {
         grid-gap: 24px;
         -ms-grid-columns: repeat(24, 1fr);
         grid-template-columns: repeat(24, 1fr);
-        margin: 0 auto;
-        width: 1152px; }
-        .grid-container .grid-display .grid-column:nth-child(-n+24) {
-          display: -ms-grid;
-          display: grid; } }
+        max-width: 1152px; } }
     @media (min-width: 1440px) {
       .grid-container .grid-display {
         grid-gap: 24px;
         -ms-grid-columns: repeat(24, 1fr);
         grid-template-columns: repeat(24, 1fr);
-        margin: 0 auto;
-        width: 1392px; }
-        .grid-container .grid-display .grid-column:nth-child(-n+24) {
-          display: -ms-grid;
-          display: grid; } }
+        max-width: 1392px; } }
+    @media (min-width: 320px) {
+      .grid-container .grid-display .grid-column:nth-child(-n+5) {
+        display: -ms-grid;
+        display: grid; } }
+    @media (min-width: 768px) {
+      .grid-container .grid-display .grid-column:nth-child(-n+13) {
+        display: -ms-grid;
+        display: grid; } }
+    @media (min-width: 1200px) {
+      .grid-container .grid-display .grid-column:nth-child(-n+25) {
+        display: -ms-grid;
+        display: grid; } }
 
 .container {
   display: -ms-grid;
@@ -134,28 +127,28 @@
   height: 100vh; }
   @media (min-width: 320px) {
     .container {
-      grid-gap: 12px;
+      grid-gap: 6px;
       margin: 0 12px;
       width: 100%; } }
   @media (min-width: 768px) {
     .container {
-      grid-gap: 12px;
+      grid-gap: 6px;
       margin: 0 12px;
       width: 100%; } }
   @media (min-width: 992px) {
     .container {
-      grid-gap: 24px;
-      margin: 0 auto;
+      grid-gap: 12px;
+      margin: 0 24px;
       width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      grid-gap: 24px;
-      margin: 0 auto;
+      grid-gap: 12px;
+      margin: 0 24px;
       width: 1152px; } }
   @media (min-width: 1440px) {
     .container {
-      grid-gap: 24px;
-      margin: 0 auto;
+      grid-gap: 12px;
+      margin: 0 24px;
       width: 1392px; } }
   @media (max-width: 768px) {
     .container {

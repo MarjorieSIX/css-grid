@@ -7,11 +7,14 @@
 @import "footer";
 
 
+*, ::before, ::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: '$font-averta-name', Arial, Helvetica, sans-serif;
   height: 100%;
-  margin: 0;
+  margin: 0 6px;
   padding: 0;
   width: 100%;
 }
@@ -30,3 +33,4 @@ li {
 hr {
   border-top: 1px solid '$color-graphite-40';
 }
+

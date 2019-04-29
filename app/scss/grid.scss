@@ -6,7 +6,7 @@ $grid: (
     map-get($breakpoints, xs),
     100%,
     4,
-    12px,
+    6px,
     12px
   ), 
   (
@@ -14,7 +14,7 @@ $grid: (
     map-get($breakpoints, sm),
     100%,
     12,
-    12px,
+    6px,
     12px
   ),
   (
@@ -22,24 +22,24 @@ $grid: (
     map-get($breakpoints, md),
     960px,
     12,
-    24px,
-    auto
+    12px,
+    24px
   ),
   (
     lg,
     map-get($breakpoints, lg),
     1152px,
     24,
-    24px,
-    auto
+    12px,
+    24px
   ),
   (
     xl,
     map-get($breakpoints, xl),
     1392px,
     24,
-    24px,
-    auto
+    12px,
+    24px
   )
 ) !default;
 
@@ -50,7 +50,7 @@ $grid: (
   opacity: 0;
   overflow: hidden;
   position: absolute;
-  width: 100%;
+  width: calc(100% - 12px);
   
   &.active { opacity: 1; }
   &.hidden { opacity: 0; }
@@ -85,6 +85,7 @@ $grid: (
     justify-content: center;
     pointer-events: none;
     position: fixed;
+    width: calc(100% - 12px);
 
     .grid-column {
       display: none;
@@ -101,18 +102,32 @@ $grid: (
       }
     }
     
-    @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
+    @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-margins, $grid-gutters in $grid {
       @media (min-width: #{$breakpoint}) {
         grid-gap: #{$grid-gutters};
         -ms-grid-columns: repeat(#{$grid-columns}, 1fr);
         grid-template-columns: repeat(#{$grid-columns}, 1fr);
-        margin: 0 #{$grid-margins};
-        width: #{$grid-width};
-      
-        .grid-column:nth-child(-n+#{$grid-columns}) {
-          display: -ms-grid;
-          display: grid;
-        }
+        // margin: 0 #{$grid-gutters};
+        max-width: #{$grid-width};
+      }
+    }
+
+    @media (min-width: map-get($breakpoints, xs)) {
+      .grid-column:nth-child(-n+5) {
+        display: -ms-grid;
+        display: grid;
+      }
+    }
+    @media (min-width: map-get($breakpoints, sm)) {
+      .grid-column:nth-child(-n+13) {
+        display: -ms-grid;
+        display: grid;
+      }
+    }
+    @media (min-width: map-get($breakpoints, lg)) {
+      .grid-column:nth-child(-n+25) {
+        display: -ms-grid;
+        display: grid;
       }
     }
   }
