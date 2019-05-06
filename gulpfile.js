@@ -1,16 +1,10 @@
-const { src, dest, watch, series, parallel }  = require('gulp');
-// const gulp = require('gulp'),
-const browserSync = require('browser-sync').create(),
-const sass = require('gulp-sass'),
-const del = require('del'),
-const autoprefixer = require('gulp-autoprefixer');
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
-const files = {
-  scssPath = './app/**/*.scss',
-  jsPath = './app/**/*.js'
-}
-// var inputStyle = './app/**/*.scss';
-var outputStyle = './app/css';
+var input = './app/scss/*.scss';
+var output = './app/css';
 var autoprefixerOptions = {
   // tester sur https://browserl.ist/
   browsers: ['last 1 version', 'Safari 9', 'Safari 10', 'Safari 11'], 
@@ -18,25 +12,29 @@ var autoprefixerOptions = {
   supports: true
 };
 
-// compile scss to css
-function style() {
-  return gulp.src(files.scssPath) // where is my scss file
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(sass().on('error', sass.logError)) // sass compiler
-    .pipe(autoprefixer(autoprefixerOptions)) // add prefixer
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(outputStyle)) // where to save the css file
-    .pipe(browserSync.stream()); // strem to all browsers
-}
-
-function watch() {
+// Static Server + watching scss/html files
+gulp.task('serve', ['sass'], function() {
   browserSync.init({
-    server: "./app"
+      server: "./app"
   });
-  gulp.watch(inputStyle, style);
-  gulp.watch('./**/*.html').on('change', browserSync.reload);
-  gulp.watch('./**/*.js').on('change', browserSync.reload);
-}
+  gulp.watch(input, ['sass']);
+  gulp.watch("./app/*.html").on('change', browserSync.reload);
+});
 
-exports.style = style;
-exports.watch = watch;
+gulp.task('sass', function () {
+  return gulp
+    .src(input)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer(autoprefixerOptions)) //.pipe(autoprefixer(autoprefixerOptions))
+    .pipe(gulp.dest(output));
+    //.pipe(browserSync.stream({match: '**/*.css'}));
+});
+
+gulp.task('watch', function() {
+  return gulp
+    // Watch the input folder for change,
+    // and run `sass` task when something happens
+    .watch(input, ['sass'])
+});
+
+gulp.task('default', ['sass', 'watch' /*, possible other tasks... */]);

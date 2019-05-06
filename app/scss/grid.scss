@@ -1,5 +1,14 @@
 @import "breakpoints";
 
+/* 
+  nom du breakpoint  
+  breakpoint
+  taille de la grille maximum
+  nombre de colonne de la grille
+  marges : bord du conteneur de la grille 
+  gutters : bords des colonnes
+*/
+
 $grid: (
   (
     xs,

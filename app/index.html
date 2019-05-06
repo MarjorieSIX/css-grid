@@ -6,167 +6,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 
-  <title>CSS Grid</title>
+  <title>Desjardins Design System</title>
 
   <link href="css/styles.css" rel="stylesheet" />
-
+  <script type="text/javascript" src="dssite.js"></script>
+  <script type="text/javascript" src="grid-display.js"></script>
 </head>
 
 <body>
-  <script>
-    var currentKeyCode = "";
-    document.addEventListener("keydown", (function(e) {
-      if (e.key === "s") {
-        currentKeyCode = e.key;
-      }
-    }));
-    document.addEventListener("keyup", (function(e) {
-      var grid = document.querySelector(".grid-container");
-      if (e.key === "x" && currentKeyCode === 's') {
-        grid.classList.toggle("active");
-      }
-      currentKeyCode = "";
-    }));
-  </script>
 
   <div class="grid-container">
     <div class="grid-size-name"></div>
-    <div class="grid-display">
-      <script>
-        for (let i = 0; i < 24; i ++) {
-          var e = document.createElement("div");
-          e.setAttribute("class", "grid-column");
-          document.querySelector(".grid-display").appendChild(e);
-        }
-      </script>
-    </div>
+    <div class="grid-display"></div>
   </div>
 
-
-
-  <!-- <div class="container">
-    
-    <header>HEADER</header>
-
-    <nav class="main-nav">NAV</nav>
-
-    <!-- main n'est pas supporté par CSS Grid --
-    <section role="main">
-      <h1>MAIN texte fonctionnel:</h1>
-      <p>texte en averta regular</p>
-      <p style="font-weight: 700">texte en averta bold (utilisant css font-weight: 700)</p>
-      <p><strong>texte en averta bold (utilisant strong)</strong></p>
-      <p><b>texte en averta bold (utilisant b)</b></p>
-
-      <p style="font-style:italic">texte en italic regular</p>
-      <p style="font-style:italic; font-weight: 700">texte en italic bold</p>
-      <p><strong><i>texte en italic bold (utilisant strong et i)</i></strong></p>
-      <p><b><i>texte en italic bold (utilisant b et i)</i></b></p>
-      <p><strong><em>texte en italic bold (utilisant strong et em)</em></strong></p>
-      <p><b><em>texte en italic bold (utilisant b et em)</em></b></p>
-      
-      <h1>Texte non fonctionnel:</h1>
-      <p style="font-weight: 500">texte en medium (utilisant css font-weight: 500)</p>
-      <p font-style="italic; font-weight: 500">texte en italic medium</p>
-    </section> 
-
-    <aside>ASIDE</aside>
-  -->
-    <!-- <footer class="six-footer">
-      <nav>
-        <ol>
-          <li>
-            <h3>Particuliers</h3>
-            <ul>
-              <li><a href="">Comptes et services reliés</a></li>
-              <li><a href="">Cartes, prêts et marges de crédit</a></li>
-              <li><a href="">Épargne et placements</a></li>
-              <li><a href="">Assurances</a></li>
-              <li><a href="">Gestion de patrimoine</a></li>
-              <li><a href="">Projets / Évènements de vie</a></li>
-              <li><a href="">Vous êtes</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Entreprises</h3>
-            <ul>
-              <li><a href="">Comptes et trésoreries</a></li>
-              <li><a href="">Financement et cartes de crédit</a></li>
-              <li><a href="">Investissement et placements</a></li>
-              <li><a href="">Assurances</a></li>
-              <li><a href="">Paiement et financement au point de vente</a></li>
-              <li><a href="">Services internationaux</a></li>
-              <li><a href="">Régimes collectifs</a></li>
-              <li><a href="">Gestion de la paie et des RH</a></li>
-              <li><a href="">Service fiduciaires</a></li>
-              <li><a href="">Marché capitaux</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>CoopMoi</h3>
-            <ul>
-              <li><a href="">Plans d'action et conseils</a></li>
-              <li><a href="">Mon entreprise</a></li>
-              <li><a href="">La différence Desjardins</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Réseaux sociaux</h3>
-            <ul>
-              <li><a href="">Facebook</a></li>
-              <li><a href="">Twitter</a></li>
-              <li><a href="">Youtube</a></li>
-              <li><a href="">Linkedin</a></li>
-              <li><a href="">Instagram</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>À propos</h3>
-            <ul>
-              <li><a href="">Desjardins</a></li>
-              <li><a href="">Carrières</a></li>
-              <li><a href="">Salle de nouvelles</a></li>
-              <li><a href="">Études économiques</a></li>
-              <li><a href="">Responsabilité sociale et coopération</a></li>
-              <li><a href="">Relations avec les investisseurs</a></li>
-              <li><a href="">Espaces fournisseurs</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Desjardins sur mobile, GPS et RSS</h3>
-            <ul>
-              <li><a href="">Applications pour Apple</a></li>
-              <li><a href="">Applications pour Android</a></li>
-            </ul>
-          </li>
-        </ol>
-      </nav>
-
-      <hr />
-
-      <div class="legal">
+  <div class="main-wrapper">
+    <div class="side-bar">
+        <p>D</p>
+        
+        <nav class="main-nav">
         <ul>
-          <li>
-            <a href="//www.desjardins.com/securite/index.jsp">Sécurité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/confidentialite/index.jsp">Confidentialité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/conditions-utilisation-notes-legales/index.jsp">Conditions d'utilisation et notes légales</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/a-propos/responsabilite-sociale-cooperation/mouvement-cooperatif-solidaire/accessibilite/index.jsp">Accessibilité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/plan-site/index.jsp">Plan du site</a>
-          </li>
-        </ul>
-        <p class="copyright">© 1996-2019, Mouvement des caisses Desjardins. Tous droits réservés.</p>
-      </div>
-    </footer> 
+            <li><a href="#">Image de marque</a></li>
+            <li class="active"><a href="#">Système de design SIX</a>
+              <ul>
+                <li><a href="#">introduction</a></li>
+                <li><a href="#">Fondements UX</a></li>
+                <li><a href="#">Fondements UI</a></li>
+                <li><a href="#">Accessibilité</a></li>
+                <li onclick="toggle_visibility('sublevelBases');">
+                    <a href="#">Bases</a>
+                    <ul class="sublevel" id="sublevelBases">
+                      <li><a href="#">Base 1</a><li>
+                    </ul>
+                </li>
+                <li class="active" onclick="toggle_visibility('sublevelElements');">
+                    <a href="#">Éléments</a>
+                    <ul class="sublevel" id="SublevelElements">
+                        <li><a href="#">Interaction</a><li>
+                        <li><a href="#">Contenu</a><li>
+                        <li class="active" onclick="toggle_visibility('sublevelForm');">
+                          <a href="#">Formulaire</a>
+                          <ul class="sublevel" id="sublevelForm">  
+                            <li><a href="#">Radio</a><li>
+                            <li><a href="#">Checkbox</a><li>
+                            <li><a href="#">Text</a><li>
+                            <li><a href="#">Password</a><li>
+                          </ul>
+                        <li>
+                        <li><a href="#">Navigation</a><li>
+                    </ul>
+                </li>
+                <li onclick="toggle_visibility('sublevelModules');">
+                  <a href="#">Modules</a>
+                  <ul class="sublevel" id="sublevelModules">
+                    <li><a href="#">aaa</a><li>
+                    <li><a href="#">bb</a><li>
+                  </ul>
+                </li>
 
-  </div>-->
+              </ul>
+            </li>
+            <li><a href="#">Outils</a></li>
+            <li><a href="#">Nous contacter</a></li>
+        </ul>
+        </nav>
+    </div>
+
+    <main class="content">
+        <header>
+          <h1>Text</h1>
+          <div class="status">Nouveau</div>
+          <div>
+            <span class="reference">02.03.04</span>
+            <!-- 
+              Icone pour design token ou web component
+              <img src="" alt="" />
+            -->
+          </div>
+        </header>
+
+        <article class="">
+          <p class="description">
+              Les experts de Desjardins s'unissent pour faire ce qu'ils font de mieux : vous conseiller, vous accompagner dans la réalisation de vos rêves de retraite et répondre à vos questions.
+          </p>
+          <hr />
+          <h2 id="full">Vue d'ensemble</h2>
+
+          <hr />
+          <h2 id="variations">Variantes</h2>
+          <h3 id="settings">États</h3>
+          <h3 id="states">Paramètres</h3>
+          <h3 id="styles">Styles</h3>
+          <h3 id="logos">Logos</h3>
+
+
+          <sidebar>
+            <ul>
+              <li><a href="#full">Vue d'ensemble</a></li>
+              <li>
+                <a href="#variations">Variantes</a>
+                <ul>
+                  <li><a href="#states">États</a></li>
+                  <li><a href="#settings">Paramètres</a></li>
+                  <li><a href="#styles">Styles</a></li>
+                  <li><a href="#logos">Logos</a></li>
+                </ul>
+              </li>
+            </ul>
+          </sidebar>
+        </article>
+    </main>
+  </div>
+
+  
 </body>
 
 </html>

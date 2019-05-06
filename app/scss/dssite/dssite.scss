@@ -1,0 +1,43 @@
+html {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.side-bar {
+  background: #dedede;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 312px;
+}
+
+
+main {
+  background: #efadef;
+  margin-left: 312px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
