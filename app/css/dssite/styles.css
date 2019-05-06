@@ -1,26 +1,20 @@
+@import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh";
 html {
   font-size: 100%;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
-  background: #fff;
+  background: #e6e7e8;
   color: #000;
   margin: 0;
-  padding: 0;
-}
-
-h1 {
-}
+  padding: 0; }
 
 .main-wrapper {
-  display: flex;
-}
+  display: flex; }
 
 .side-bar {
   background: #dedede;
@@ -30,14 +24,17 @@ h1 {
   left: 0;
   display: flex;
   flex-direction: column;
-  width: 312px;
-}
-
+  width: 312px; }
 
 main {
   background: #efadef;
   margin-left: 312px;
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-}
+  flex: 1 1 auto; }
+
+.main-nav ul {
+  list-style-type: none; }
+
+.main-nav .sublevel {
+  display: none; }

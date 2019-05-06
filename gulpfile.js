@@ -1,40 +1,40 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+// const { src, dest, watch, series, parallel }  = require('gulp');
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 
-var input = './app/scss/*.scss';
-var output = './app/css';
+var inputStyle = './app/scss/**/*.scss';
+var outputStyle = './app/css';
 var autoprefixerOptions = {
-  // tester sur https://browserl.ist/
+  // test on https://browserl.ist/
   browsers: ['last 1 version', 'Safari 9', 'Safari 10', 'Safari 11'], 
   grid: false,
   supports: true
 };
 
-// Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+// compile scss to css
+function style() {
+  return (
+    gulp
+      .src(inputStyle) // where is my scss file
+      .pipe(sass().on('error', sass.logError)) // sass compiler
+      .pipe(autoprefixer(autoprefixerOptions)) // add prefixer
+      .pipe(gulp.dest(outputStyle)) // where to save the css file
+      .pipe(browserSync.stream()) // strem to all browsers
+  ); 
+}
+
+function watch() {
   browserSync.init({
-      server: "./app"
+    server: {
+      baseDir: './app/'
+    }
   });
-  gulp.watch(input, ['sass']);
-  gulp.watch("./app/*.html").on('change', browserSync.reload);
-});
+  gulp.watch(inputStyle, style); // run the style function if there's a change in any .scss file
+  gulp.watch('./app/**/*.html').on('change', browserSync.reload);
+  gulp.watch('./app/**/*.js').on('change', browserSync.reload);
+}
 
-gulp.task('sass', function () {
-  return gulp
-    .src(input)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer(autoprefixerOptions)) //.pipe(autoprefixer(autoprefixerOptions))
-    .pipe(gulp.dest(output));
-    //.pipe(browserSync.stream({match: '**/*.css'}));
-});
-
-gulp.task('watch', function() {
-  return gulp
-    // Watch the input folder for change,
-    // and run `sass` task when something happens
-    .watch(input, ['sass'])
-});
-
-gulp.task('default', ['sass', 'watch' /*, possible other tasks... */]);
+exports.style = style;
+exports.watch = watch;
