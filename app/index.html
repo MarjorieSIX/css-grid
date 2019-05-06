@@ -11,44 +11,55 @@
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/dssite/styles.css" rel="stylesheet" />
 
-  <script type="text/javascript" src="dssite.js"></script>
-  <script type="text/javascript" src="grid-display.js"></script>
+  <script type="text/javascript" src="js/dssite.js"></script>
+  <script type="text/javascript" src="js/grid-display.js"></script>
 </head>
 
 <body>
 
-  <div class="grid-container">
+  <!-- <div class="grid-container">
     <div class="grid-size-name"></div>
-    <div class="grid-display"></div>
-  </div>
-
+    <div class="grid-display">
+      <script>sx
+        // Création automatique des colonnes de la grille
+        for (let i = 0; i < 24; i ++) {
+          var e = document.createElement("div");
+          e.setAttribute("class", "grid-column");
+          document.querySelector(".grid-display").appendChild(e);
+        }
+      </script>
+    </div>
+  </div> -->
+    
   <div class="main-wrapper">
-    <div class="side-bar">
-        <p>D</p>
+    <div class="sidebar">
+        <div class="logo">
+          D
+        </div>
         
         <nav class="main-nav">
-        <ul>
+          <ul class="main-level">
             <li><a href="#">Image de marque</a></li>
             <li class="active"><a href="#">Système de design SIX</a>
-              <ul>
-                <li><a href="#">introduction</a></li>
+              <ul class="secondary-level">
+                <li><a href="#">Introduction</a></li>
                 <li><a href="#">Fondements UX</a></li>
                 <li><a href="#">Fondements UI</a></li>
                 <li><a href="#">Accessibilité</a></li>
-                <li onclick="toggle_visibility('sublevelBases');">
+                <li onclick="toggle_visibility('sublevel1Bases');">
                     <a href="#">Bases</a>
-                    <ul class="sublevel" id="sublevelBases">
+                    <ul class="sublevel1" id="sublevel1Bases">
                       <li><a href="#">Base 1</a><li>
                     </ul>
                 </li>
-                <li class="active" onclick="toggle_visibility('sublevelElements');">
+                <li class="active" onclick="toggle_visibility('sublevel1Elements');">
                     <a href="#">Éléments</a>
-                    <ul class="sublevel" id="SublevelElements">
+                    <ul class="sublevel1" id="sublevel1Elements">
                         <li><a href="#">Interaction</a><li>
                         <li><a href="#">Contenu</a><li>
-                        <li class="active" onclick="toggle_visibility('sublevelForm');">
+                        <li class="active" onclick="toggle_visibility('sublevel2Form');">
                           <a href="#">Formulaire</a>
-                          <ul class="sublevel" id="sublevelForm">  
+                          <ul class="sublevel2" id="sublevel2Form">  
                             <li><a href="#">Radio</a><li>
                             <li><a href="#">Checkbox</a><li>
                             <li><a href="#">Text</a><li>
@@ -58,9 +69,9 @@
                         <li><a href="#">Navigation</a><li>
                     </ul>
                 </li>
-                <li onclick="toggle_visibility('sublevelModules');">
+                <li onclick="toggle_visibility('sublevel1Modules');">
                   <a href="#">Modules</a>
-                  <ul class="sublevel" id="sublevelModules">
+                  <ul class="sublevel1" id="sublevel1Modules">
                     <li><a href="#">aaa</a><li>
                     <li><a href="#">bb</a><li>
                   </ul>
@@ -70,7 +81,7 @@
             </li>
             <li><a href="#">Outils</a></li>
             <li><a href="#">Nous contacter</a></li>
-        </ul>
+          </ul>
         </nav>
     </div>
 

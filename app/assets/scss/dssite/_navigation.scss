@@ -1,0 +1,42 @@
+@import "../designTokens";
+
+.main-nav {
+  ul.main-level {
+    list-style-type: none;
+    margin: 0 24px;
+    
+    li {
+      min-height: 24px;
+    }
+
+    > li {
+      border-bottom: 2px solid #979797;
+      margin-top: 10px;
+    }
+
+    a {
+      color: $color-graphite-50;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 24px;
+      text-decoration: none;  
+    }
+
+    li.active > a:first-child {
+      font-weight: 700;
+    }
+  }
+  
+  .sublevel1, 
+  .sublevel2 {
+    display: none;
+  }
+   
+  .secondary-level {
+    margin-left: 20px;
+  }
+
+  .sublevel2 {
+    margin-left: 69px;
+  }
+}

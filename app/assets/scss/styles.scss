@@ -1,5 +1,6 @@
-@import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh"; // Design tokens
 @import "reset";
+
+@import "designTokens";
 @import "breakpoints";
 @import "grid";
 @import "fonts";
@@ -31,6 +32,6 @@ li {
 }
 
 hr {
-  border-top: 1px solid '$color-graphite-40';
+  border-top: 1px solid $color-graphite-40;
 }
 

@@ -44,29 +44,31 @@ main {
  * Do not edit directly
  * Generated on Mon, 22 Apr 2019 17:31:16 GMT
  */
-.main-nav ul.main-level {
+.main-nav ul {
   list-style-type: none;
   margin: 0 24px; }
-  .main-nav ul.main-level li {
+  .main-nav ul li {
     min-height: 24px; }
-  .main-nav ul.main-level > li {
-    border-bottom: 2px solid #979797;
-    margin-top: 10px; }
-  .main-nav ul.main-level a {
+  .main-nav ul + li {
+    border-bottom: 2px solid #979797; }
+  .main-nav ul.active *[href] {
+    font-weight: 700; }
+  .main-nav ul a {
     color: #383838;
     font-size: 16px;
     font-weight: normal;
     line-height: 24px;
     text-decoration: none; }
-  .main-nav ul.main-level li.active > a:first-child {
-    font-weight: 700; }
 
 .main-nav .sublevel1,
 .main-nav .sublevel2 {
   display: none; }
+  .main-nav .sublevel1 ul li,
+  .main-nav .sublevel2 ul li {
+    border: none; }
 
-.main-nav .secondary-level {
-  margin-left: 20px; }
+.main-nav .sublevel1 {
+  margin-left: 44px; }
 
 .main-nav .sublevel2 {
   margin-left: 69px; }

@@ -258,7 +258,9 @@ table {
   grid-template-rows: 1fr 5fr 1fr;
   -ms-grid-columns: 2fr 5fr 3fr;
   grid-template-columns: 2fr 5fr 3fr;
-  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+  grid-template-areas: "header header header"
+ "nav main aside"
+ "footer footer footer";
   height: 100vh; }
   @media (min-width: 320px) {
     .container {
@@ -291,7 +293,10 @@ table {
       grid-template-rows: 1fr 1fr 5fr 1fr;
       -ms-grid-columns: 2fr 5fr 3fr;
       grid-template-columns: 2fr 5fr 3fr;
-      grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
+      grid-template-areas: "header header header"
+ "nav nav nav"
+ "main main aside"    
+ "footer footer footer"; } }
   @media (max-width: 480px) {
     .container {
       display: block; } }
@@ -334,14 +339,14 @@ table {
   font-style: normal;
   font-weight: '$font-weight-light';
   src: local("$font-averta-name"), local("Averta-Light"), "$font-averta-url-light"; }
-
+$font-weight-
 /* averta-regular */
 @font-face {
   font-family: '$font-averta-name';
   font-style: normal;
   font-weight: '$font-weight-regular';
   src: local("$font-averta-name"), local("Averta-Regular"), "$font-averta-url-regular"; }
-
+$font-weight-
 /* averta-semibold */
 @font-face {
   font-family: '$font-averta-name';
@@ -349,7 +354,7 @@ table {
   font-weight: '$font-weight-semibold';
   /* pour N3-UX devrait etre 600 */
   src: local("$font-averta-name"), local("Averta-Semibold"), "$font-averta-url-semibold"; }
-
+$font-weight-
 /* averta-bold */
 @font-face {
   font-family: '$font-averta-name';
@@ -493,7 +498,9 @@ table {
   grid-template-rows: 1fr 5fr 1fr;
   -ms-grid-columns: 2fr 5fr 3fr;
   grid-template-columns: 2fr 5fr 3fr;
-  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+  grid-template-areas: "header header header"
+ "nav main aside"
+ "footer footer footer";
   height: 100vh; }
   @media (min-width: 320px) {
     .container {
@@ -526,7 +533,10 @@ table {
       grid-template-rows: 1fr 1fr 5fr 1fr;
       -ms-grid-columns: 2fr 5fr 3fr;
       grid-template-columns: 2fr 5fr 3fr;
-      grid-template-areas: "header header header" "nav nav nav" "main main aside"     "footer footer footer"; } }
+      grid-template-areas: "header header header"
+ "nav nav nav"
+ "main main aside"    
+ "footer footer footer"; } }
   @media (max-width: 480px) {
     .container {
       display: block; } }
@@ -651,4 +661,4 @@ li {
   font-family: '$font-averta-name', Arial, Helvetica, sans-serif; }
 
 hr {
-  border-top: 1px solid #666666; }
+  border-top: 1px solid '$color-graphite-40'; }

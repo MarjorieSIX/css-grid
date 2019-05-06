@@ -16,9 +16,3 @@ document.addEventListener("keyup", (function(e) {
   currentKeyCode = "";
 }));
 
-// Création automatique des colonnes de la grille
-for (let i = 0; i < 24; i ++) {
-  var e = document.createElement("div");
-  e.setAttribute("class", "grid-column");
-  document.querySelector(".grid-display").appendChild(e);
-}

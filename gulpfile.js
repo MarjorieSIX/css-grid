@@ -4,7 +4,7 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
-var inputStyle = './app/scss/**/*.scss';
+var inputStyle = './app/assets/scss/**/*.scss';
 var outputStyle = './app/css';
 var autoprefixerOptions = {
   // test on https://browserl.ist/

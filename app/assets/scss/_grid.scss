@@ -31,24 +31,24 @@ $grid: (
     map-get($breakpoints, md),
     960px,
     12,
-    12px,
-    24px
+    20px,
+    16px
   ),
   (
     lg,
     map-get($breakpoints, lg),
     1152px,
     24,
-    12px,
-    24px
+    20px,
+    16px
   ),
   (
     xl,
     map-get($breakpoints, xl),
     1392px,
     24,
-    12px,
-    24px
+    20px,
+    16px
   )
 ) !default;
 
