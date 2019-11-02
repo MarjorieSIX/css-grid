@@ -1,0 +1,181 @@
+@import "breakpoints";
+
+/*
+  Largeur de contenu maximum
+  breakpoint - marges
+*/
+$xs-max-width: 100%;
+$sm-max-width: 100%;
+$md-max-width: 944px;
+$lg-max-width: 1128px;
+$xl-max-width: 1344px;
+
+/*
+  Nombre de colonnes:
+  XS: 4 colonnes.
+  SM, MD, LG, LG-confort, XL, XL-confort: 12 colonnes
+*/
+$xs-col-count: 4;
+$sm-andplus-col-count: 12; 
+
+/*
+  Tailles de colonnes
+*/
+$md-col-width: 64px;
+$lg-col-width: 72px;
+$lgc-col-width: 50px;
+$xl-col-width: 90px;
+$xlc-col-width: 68px;
+
+/*
+  Taille des marges. (marges horizontales du contenu)
+  N'est pas utilisé comme on utilise la valeur largeur de contenu qui est le calcul breakpoint - marges
+*/
+$max-md-margin-width: 16px;
+$lg-margin-width: 24px;
+$lgc-margin-width: 48px;
+$xl-margin-width: 24px;
+$xlc-margin-width: 48px;
+
+/*
+  Taille des gutters
+  XS, SM et MD: 16px.
+  LG et XL: 24px
+*/
+$max-md-gutter-width: 16px;
+$min-lg-gutter-width: 24px;
+
+/*
+  Nom du point de rupture
+  Valeur de la taille max du point de rupture
+  Largeur du contenu max (breakpoint - marge)
+  Largeur de colonnes
+  Gutters : marge entre les colonnes
+*/
+$grid: (
+  (
+    xs,
+    map-get($breakpoints, xs),
+    100%,
+    $xs-col-count,
+    $max-md-gutter-width
+  ), 
+  (
+    sm,
+    map-get($breakpoints, sm),
+    100%,
+    $sm-andplus-col-count,
+    $max-md-gutter-width
+  ),
+  (
+    md,
+    map-get($breakpoints, md),
+    $md-max-width,
+    $sm-andplus-col-count,
+    $max-md-gutter-width
+  ),
+  (
+    lg,
+    map-get($breakpoints, lg),
+    $lg-max-width,
+    $sm-andplus-col-count,
+    $min-lg-gutter-width
+  ),
+  (
+    xl,
+    map-get($breakpoints, xl),
+    $xl-max-width,
+    $sm-andplus-col-count,
+    $min-lg-gutter-width
+  )
+) !default;
+
+.grid-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  
+  &.active { opacity: 0.5; }
+  &.hidden { opacity: 0; }
+
+  .grid-size-name {
+    background: rgba(0, 0, 0, 0.5);
+    height: 30px;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+  
+    @each $bp-name, $breakpoint in $grid {
+      @media (min-width: #{$breakpoint}) {
+        &:before {
+          color: white;
+          content: "#{$bp-name}";
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .grid-display {
+    align-content: start;
+    counter-reset: grid;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1;
+    grid-template-rows: 1;
+    height: 100vh;
+    justify-content: center;
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    .grid-column {
+      display: none;
+      background-color: lightgreen;
+      height: 100vh;
+      position: relative;
+      &:before {
+        color: white;
+        counter-increment: grid;
+        content: counters(grid,"");
+        font-weight: bold;
+        padding-top: 30px;
+        text-align: center;
+      }
+    }
+
+    @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
+      @media (min-width: #{$breakpoint}) {
+        grid-gap: #{$grid-gutters};
+        -ms-grid-columns: repeat(#{$grid-columns}, 1fr);
+        grid-template-columns: repeat(#{$grid-columns}, 1fr);
+        // margin: 0 #{$grid-gutters};
+        max-width: #{$grid-width};
+      }
+    }
+
+    @media (min-width: map-get($breakpoints, xs)) {
+      .grid-column:nth-child(-n+5) {
+        display: -ms-grid;
+        display: grid;
+      }
+    }
+    @media (min-width: map-get($breakpoints, sm)) {
+      .grid-column:nth-child(-n+13) {
+        display: -ms-grid;
+        display: grid;
+      }
+    }
+
+    @include bp-between(xs, md) {
+      width: calc(100% - #{$max-md-margin-width});
+    }
+  }
+}
+

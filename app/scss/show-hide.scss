@@ -1,0 +1,18 @@
+@import "breakpoints";
+
+@mixin show() {
+  display: flex;
+  visibility: visible;
+}
+
+@mixin hide() {
+  display: none !important;
+  visibility: hidden;
+}
+
+@include bp-below(md) {
+  .hide-xs,
+  .hide-md {
+    @include hide;
+  }
+} 

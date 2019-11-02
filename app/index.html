@@ -9,7 +9,6 @@
   <title>CSS Grid</title>
 
   <link href="css/styles.css" rel="stylesheet" />
-
 </head>
 
 <body>
@@ -41,132 +40,42 @@
       </script>
     </div>
   </div>
+  
 
+  <div class="full-bleed">
+    <p style="padding: 20px">test full bleed</p>
+  </div>
 
+  <div class="full-width">test de container full-width sur tous les breakpoints (100% de la largeur du contenu)</div>
 
-  <!-- <div class="container">
-    
-    <header>HEADER</header>
+  <div class="container xs-flex">
+    <div class="xs-w-2 sm-w-6 w-6">test de container XS 4 cols. Autre 6 colonnes (50%)</div>
+    <div class="xs-w-2 sm-w-6 w-6">test de container XS 4 cols. Autre 6 colonnes (50%)</div>
+  </div>
 
-    <nav class="main-nav">NAV</nav>
+  <div class="container">
+    <div class="xs-w-4 sm-w-6 w-6">test de container XS 4 cols. Autre 6 colonnes (50%)</div>
+    <div class="xs-w-4 sm-w-6 w-6">test de container XS 4 cols. Autre 6 colonnes (50%)</div>
+  </div>
 
-    <!-- main n'est pas supporté par CSS Grid --
-    <section role="main">
-      <h1>MAIN texte fonctionnel:</h1>
-      <p>texte en averta regular</p>
-      <p style="font-weight: 700">texte en averta bold (utilisant css font-weight: 700)</p>
-      <p><strong>texte en averta bold (utilisant strong)</strong></p>
-      <p><b>texte en averta bold (utilisant b)</b></p>
+  <div class="container">
+    <div class="xs-w-4 sm-w-12 w-8">test de container XS 4 cols. SM 12 cols. Autre 8 colonnes (66,66%)</div>
+    <div class="hide-xs hide-sm w-4">test de container caché sous XS et SM. Autre 4 colonnes (33.33%)</div>
+  </div>
 
-      <p style="font-style:italic">texte en italic regular</p>
-      <p style="font-style:italic; font-weight: 700">texte en italic bold</p>
-      <p><strong><i>texte en italic bold (utilisant strong et i)</i></strong></p>
-      <p><b><i>texte en italic bold (utilisant b et i)</i></b></p>
-      <p><strong><em>texte en italic bold (utilisant strong et em)</em></strong></p>
-      <p><b><em>texte en italic bold (utilisant b et em)</em></b></p>
-      
-      <h1>Texte non fonctionnel:</h1>
-      <p style="font-weight: 500">texte en medium (utilisant css font-weight: 500)</p>
-      <p font-style="italic; font-weight: 500">texte en italic medium</p>
-    </section> 
+  <div class="container">
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+  </div>
 
-    <aside>ASIDE</aside>
-  -->
-    <!-- <footer class="six-footer">
-      <nav>
-        <ol>
-          <li>
-            <h3>Particuliers</h3>
-            <ul>
-              <li><a href="">Comptes et services reliés</a></li>
-              <li><a href="">Cartes, prêts et marges de crédit</a></li>
-              <li><a href="">Épargne et placements</a></li>
-              <li><a href="">Assurances</a></li>
-              <li><a href="">Gestion de patrimoine</a></li>
-              <li><a href="">Projets / Évènements de vie</a></li>
-              <li><a href="">Vous êtes</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Entreprises</h3>
-            <ul>
-              <li><a href="">Comptes et trésoreries</a></li>
-              <li><a href="">Financement et cartes de crédit</a></li>
-              <li><a href="">Investissement et placements</a></li>
-              <li><a href="">Assurances</a></li>
-              <li><a href="">Paiement et financement au point de vente</a></li>
-              <li><a href="">Services internationaux</a></li>
-              <li><a href="">Régimes collectifs</a></li>
-              <li><a href="">Gestion de la paie et des RH</a></li>
-              <li><a href="">Service fiduciaires</a></li>
-              <li><a href="">Marché capitaux</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>CoopMoi</h3>
-            <ul>
-              <li><a href="">Plans d'action et conseils</a></li>
-              <li><a href="">Mon entreprise</a></li>
-              <li><a href="">La différence Desjardins</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Réseaux sociaux</h3>
-            <ul>
-              <li><a href="">Facebook</a></li>
-              <li><a href="">Twitter</a></li>
-              <li><a href="">Youtube</a></li>
-              <li><a href="">Linkedin</a></li>
-              <li><a href="">Instagram</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>À propos</h3>
-            <ul>
-              <li><a href="">Desjardins</a></li>
-              <li><a href="">Carrières</a></li>
-              <li><a href="">Salle de nouvelles</a></li>
-              <li><a href="">Études économiques</a></li>
-              <li><a href="">Responsabilité sociale et coopération</a></li>
-              <li><a href="">Relations avec les investisseurs</a></li>
-              <li><a href="">Espaces fournisseurs</a></li>
-            </ul>
-          </li>
-          <li>
-            <h3>Desjardins sur mobile, GPS et RSS</h3>
-            <ul>
-              <li><a href="">Applications pour Apple</a></li>
-              <li><a href="">Applications pour Android</a></li>
-            </ul>
-          </li>
-        </ol>
-      </nav>
+  <div class="container">
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+    <div class="xs-w-4 sm-w-6 w-6">test de container XS 4 cols. Autre 6 colonnes (50%)</div>
+    <div class="xs-w-4 sm-w-3 w-3">test de container XS 4 cols. Autre 3 colonnes (25%)</div>
+  </div>
 
-      <hr />
-
-      <div class="legal">
-        <ul>
-          <li>
-            <a href="//www.desjardins.com/securite/index.jsp">Sécurité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/confidentialite/index.jsp">Confidentialité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/conditions-utilisation-notes-legales/index.jsp">Conditions d'utilisation et notes légales</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/a-propos/responsabilite-sociale-cooperation/mouvement-cooperatif-solidaire/accessibilite/index.jsp">Accessibilité</a>
-          </li>
-          <li>
-            <a href="//www.desjardins.com/plan-site/index.jsp">Plan du site</a>
-          </li>
-        </ul>
-        <p class="copyright">© 1996-2019, Mouvement des caisses Desjardins. Tous droits réservés.</p>
-      </div>
-    </footer> 
-
-  </div>-->
 </body>
 
 </html>

@@ -1,0 +1,162 @@
+@import "breakpoints";
+@import "grid-display";
+
+
+.full-width {
+  background: lightseagreen;
+  margin: 0 auto;
+  padding: 20px;
+  @include bp-between(xs, md) {
+    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+  }
+  @include bp-between(md, lg) {
+    width: #{$md-max-width};
+  }
+  @include bp-between(lg, xl) {
+    width: #{$lg-max-width};
+  }
+  @include bp-above(xl) {
+    width: #{$xl-max-width};
+  }
+}
+
+.full-bleed { 
+  background-color: lightyellow; 
+  width: 100%; 
+  z-index: 2;
+}
+
+.container { 
+  background-color: #aaa;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.w-12 { 
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.w-8 { 
+  background-color: lightpink;
+  padding: 20px;
+}
+
+.w-6 { 
+  background-color: lightcoral;
+  padding: 20px;
+}
+
+.w-4 { 
+  background-color: lightseagreen;
+  padding: 20px;
+}
+
+.w-3 { 
+  background-color: lightgreen;
+  padding: 20px;
+}
+
+/*
+  Pour le XS avec largeurs de contenu fluides
+*/
+@include bp-below(sm) {
+  .container {
+    width: calc(#{$xs-max-width} - #{$max-md-margin-width});
+    &.xs-flex {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .xs-w-2 {
+    .xs-flex & {
+      width: calc(((#{$xs-max-width} / #{$xs-col-count}) * 2) - (#{$max-md-gutter-width} / 2));
+    }
+  }
+  .xs-w-#{$xs-col-count} { 
+    margin: 0 auto;
+    width: #{$sm-max-width};
+  }
+  .xs-w-fullwidth { 
+    margin: 0 auto;
+    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+  }
+}
+
+/*
+  Pour le SM avec largeurs de contenu fluides
+*/
+@include bp-between(sm, md) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+  }
+  .sm-w-3 {
+    background: lightcyan;
+    width: calc((#{$sm-max-width} / 4) - ((#{$max-md-gutter-width}  * 4 ) / 3));
+  }
+  .sm-w-6 {
+    background: lightgoldenrodyellow;
+    width: calc((#{$sm-max-width} / 2) - (#{$max-md-gutter-width} / 2));
+  }
+  .sm-w-#{$sm-andplus-col-count}{
+    margin: 0 auto;
+    width: #{$sm-max-width};
+  }
+  .sm-w-fullwidth {
+    margin: 0 auto;
+    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+  }
+}
+
+/*
+  Pour les largeurs de contenu fixe
+*/
+$layout-fixe: (
+  (
+    md,
+    map-get($breakpoints, md),
+    $md-max-width,
+    $sm-andplus-col-count,
+    $md-col-width,
+    $max-md-gutter-width
+  ),
+  (
+    lg,
+    map-get($breakpoints, lg),
+    $lg-max-width,
+    $sm-andplus-col-count,
+    $lg-col-width,
+    $min-lg-gutter-width
+  ),
+  (
+    xl,
+    map-get($breakpoints, xl),
+    $xl-max-width,
+    $sm-andplus-col-count,
+    $xl-col-width,
+    $min-lg-gutter-width
+  )
+) !default;
+@each $bp-name, $breakpoint, $grid-width, $grid-columns, $col-width, $grid-gutters in $layout-fixe {
+  @media (min-width: #{$breakpoint}) {
+    $nbcols: '3', '4', '6', '8';
+    @for $i from 1 through length($nbcols) {
+      .w-#{nth($nbcols, $i)} {
+        width: calc((#{$col-width} * #{nth($nbcols, $i)}) + (#{$grid-gutters} * (#{nth($nbcols, $i)} - 1)));
+      }
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: #{$grid-width};
+    }
+    .w-#{$grid-columns} {
+      margin: 0 auto;
+      width: #{$grid-width};
+    }
+  }
+}
+
+

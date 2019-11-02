@@ -21,3 +21,8 @@
   Utilisation : @include bp-between(sm, md) {}
   Résultat : @media (min-width: 768px) and (max-width: 1199px) {
 */
+@media (max-width: 975px) {
+  .hide-xs,
+  .hide-md {
+    display: none !important;
+    visibility: hidden; } }

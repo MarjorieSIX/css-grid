@@ -1,11 +1,9 @@
 @import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh"; // Design tokens
-@import "reset";
+@import "normalize";
 @import "breakpoints";
-@import "grid";
-@import "fonts";
-
-@import "footer";
-
+@import "grid-display";
+@import "layout";
+@import "show-hide";
 
 *, ::before, ::after {
   box-sizing: border-box;
@@ -14,7 +12,7 @@
 body {
   font-family: '$font-averta-name', Arial, Helvetica, sans-serif;
   height: 100%;
-  margin: 0 6px;
+  margin: 0;
   padding: 0;
   width: 100%;
 }
