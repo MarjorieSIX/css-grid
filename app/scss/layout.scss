@@ -2,7 +2,7 @@
 @import "grid-display";
 
 
-.full-width {
+.w-full {
   background: lightseagreen;
   margin: 0 auto;
   padding: 20px;
@@ -20,7 +20,7 @@
   }
 }
 
-.full-bleed { 
+.w-bleed { 
   background-color: lightyellow; 
   width: 100%; 
   z-index: 2;
@@ -66,20 +66,14 @@
     &.xs-flex {
       display: flex;
       justify-content: space-between;
+      .w-xs-2 {
+        width: calc(((#{$xs-max-width} / #{$xs-col-count}) * 2) - (#{$max-md-gutter-width} / 2));
+      }
     }
-  }
-  .xs-w-2 {
-    .xs-flex & {
-      width: calc(((#{$xs-max-width} / #{$xs-col-count}) * 2) - (#{$max-md-gutter-width} / 2));
+    .w-xs-#{$xs-col-count} { 
+      margin: 0 auto;
+      width: #{$sm-max-width};
     }
-  }
-  .xs-w-#{$xs-col-count} { 
-    margin: 0 auto;
-    width: #{$sm-max-width};
-  }
-  .xs-w-fullwidth { 
-    margin: 0 auto;
-    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
   }
 }
 
@@ -91,22 +85,22 @@
     display: flex;
     justify-content: space-between;
     width: calc(#{$sm-max-width} - #{$max-md-margin-width});
-  }
-  .sm-w-3 {
-    background: lightcyan;
-    width: calc((#{$sm-max-width} / 4) - ((#{$max-md-gutter-width}  * 4 ) / 3));
-  }
-  .sm-w-6 {
-    background: lightgoldenrodyellow;
-    width: calc((#{$sm-max-width} / 2) - (#{$max-md-gutter-width} / 2));
-  }
-  .sm-w-#{$sm-andplus-col-count}{
-    margin: 0 auto;
-    width: #{$sm-max-width};
-  }
-  .sm-w-fullwidth {
-    margin: 0 auto;
-    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+    .w-sm-3 {
+      background: lightcyan;
+      width: calc((#{$sm-max-width} / 4) - ((#{$max-md-gutter-width}  * 4 ) / 3));
+    }
+    .w-sm-6 {
+      background: lightgoldenrodyellow;
+      width: calc((#{$sm-max-width} / 2) - (#{$max-md-gutter-width} / 2));
+    }
+    .w-sm-#{$sm-andplus-col-count}{
+      margin: 0 auto;
+      width: #{$sm-max-width};
+    }
+    .w-sm-fullwidth {
+      margin: 0 auto;
+      width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+    }
   }
 }
 
@@ -139,6 +133,7 @@ $layout-fixe: (
     $min-lg-gutter-width
   )
 ) !default;
+
 @each $bp-name, $breakpoint, $grid-width, $grid-columns, $col-width, $grid-gutters in $layout-fixe {
   @media (min-width: #{$breakpoint}) {
     $nbcols: '3', '4', '6', '8';
@@ -147,16 +142,23 @@ $layout-fixe: (
         width: calc((#{$col-width} * #{nth($nbcols, $i)}) + (#{$grid-gutters} * (#{nth($nbcols, $i)} - 1)));
       }
     }
-    .container {
-      display: flex;
-      justify-content: space-between;
-      width: #{$grid-width};
-    }
+
+    .container, 
     .w-#{$grid-columns} {
-      margin: 0 auto;
       width: #{$grid-width};
     }
   }
 }
 
-
+/*
+  Pour le MD et plus
+*/
+@include bp-above(md) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .w-#{$sm-andplus-col-count} {
+    margin: 0 auto;
+  }
+}
