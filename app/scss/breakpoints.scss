@@ -44,7 +44,7 @@ $breakpoints: (
     // Récupérer le point de rupture.
     $breakpoint-value: map-get($breakpoints, $breakpoint);
     // Écrire la media query ciblant la valeur du point de rupture -1px et moins
-    @media (max-width: ($breakpoint-value - 1)) {
+    @media (max-width: ($breakpoint-value - 0.01)) {
       @content;
     }
     // Si le point de rupture n'existe pas dans le mapping.
@@ -67,7 +67,7 @@ $breakpoints: (
     $lower-breakpoint: map-get($breakpoints, $lower);
     $upper-breakpoint: map-get($breakpoints, $upper);
     // Écrire la media query.
-    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 0.01)) {
       @content;
     }
     // Si un ou les deux points de ruptures n'existent pas dans le mapping.

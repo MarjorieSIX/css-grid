@@ -1,9 +1,10 @@
 @import "https://drive.google.com/open?id=1zpb67nI7AiKNre0ps7PyS8XzMDgPPiVh"; // Design tokens
 @import "normalize";
 @import "breakpoints";
-@import "grid-display";
-@import "layout";
-@import "show-hide";
+@import "gridflex-devtool";
+@import "gridflex-layout";
+@import "gridflex-show-hide";
+@import "gridflex-variables";
 
 *, ::before, ::after {
   box-sizing: border-box;

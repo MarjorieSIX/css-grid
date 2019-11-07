@@ -1,5 +1,5 @@
 @import "breakpoints";
-@import "grid-display";
+@import "gridflex-variables";
 
 
 .w-full {
@@ -87,7 +87,7 @@
     width: calc(#{$sm-max-width} - #{$max-md-margin-width});
     .w-sm-3 {
       background: lightcyan;
-      width: calc((#{$sm-max-width} / 4) - ((#{$max-md-gutter-width}  * 4 ) / 3));
+      width: calc((#{$sm-max-width} - (#{$max-md-gutter-width}  * 3)) / 4);
     }
     .w-sm-6 {
       background: lightgoldenrodyellow;

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/* 
+  Définitions des points de rupture
+  Pour aller plus loin : https://github.com/eduardoboucas/include-media/tree/master/src
+*/
+/*
+  Mixin ciblant la valeur d'un point de rupture et plus
+  Exemple : Afficher sur un écran de taille minimum sm et plus
+  Utilisation : @include bp-above(sm) {}
+  Résultat : @media (min-width: 768px) {
+*/
+/*
+  Mixin ciblant la valeur d'un point de rupture -1px (pour éviter les conflits avec la mixin bp-above) et moins
+  Exemple : Afficher sur un écran de taille maximum sm - 1px et moins
+  Utilisation : @include bp-below(sm) {}
+  Résultat : @media (max-width: 767px) {
+*/
+/*
+  Mixin ciblant les valeurs entre deux points de rupture
+  Exemple : Afficher sur un écran de taille minimum sm et maximum md
+  Utilisation : @include bp-between(sm, md) {}
+  Résultat : @media (min-width: 768px) and (max-width: 1199px) {
+*/
+/*
+  Largeur de contenu maximum
+  breakpoint - marges
+*/
+/*
+  Nombre de colonnes:
+  XS: 4 colonnes.
+  SM, MD, LG, LG-confort, XL, XL-confort: 12 colonnes
+*/
+/*
+  Tailles de colonnes
+*/
+/*
+  Taille des marges. (marges horizontales du contenu)
+  N'est pas utilisé comme on utilise la valeur largeur de contenu qui est le calcul breakpoint - marges
+*/
+/*
+  Taille des gutters
+  XS, SM et MD: 16px.
+  LG et XL: 24px
+*/
+.w-full {
+  background: lightseagreen;
+  margin: 0 auto;
+  padding: 20px; }
+  @media (min-width: 320px) and (max-width: 975.99px) {
+    .w-full {
+      width: calc(100% - 16px); } }
+  @media (min-width: 976px) and (max-width: 1199.99px) {
+    .w-full {
+      width: 944px; } }
+  @media (min-width: 1200px) and (max-width: 1439.99px) {
+    .w-full {
+      width: 1128px; } }
+  @media (min-width: 1440px) {
+    .w-full {
+      width: 1344px; } }
+
+.w-bleed {
+  background-color: lightyellow;
+  width: 100%;
+  z-index: 2; }
+
+.container {
+  background-color: #aaa;
+  margin: 0 auto;
+  z-index: 2; }
+
+.w-12 {
+  background-color: lightblue;
+  padding: 20px; }
+
+.w-8 {
+  background-color: lightpink;
+  padding: 20px; }
+
+.w-6 {
+  background-color: lightcoral;
+  padding: 20px; }
+
+.w-4 {
+  background-color: lightseagreen;
+  padding: 20px; }
+
+.w-3 {
+  background-color: lightgreen;
+  padding: 20px; }
+
+/*
+  Pour le XS avec largeurs de contenu fluides
+*/
+@media (max-width: 767.99px) {
+  .container {
+    width: calc(100% - 16px); }
+    .container.xs-flex {
+      display: flex;
+      justify-content: space-between; }
+      .container.xs-flex .w-xs-2 {
+        width: calc(((100% / 4) * 2) - (16px / 2)); }
+    .container .w-xs-4 {
+      margin: 0 auto;
+      width: 100%; } }
+
+/*
+  Pour le SM avec largeurs de contenu fluides
+*/
+@media (min-width: 768px) and (max-width: 975.99px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 16px); }
+    .container .w-sm-3 {
+      background: lightcyan;
+      width: calc((100% - (16px  * 3)) / 4); }
+    .container .w-sm-6 {
+      background: lightgoldenrodyellow;
+      width: calc((100% / 2) - (16px / 2)); }
+    .container .w-sm-12 {
+      margin: 0 auto;
+      width: 100%; }
+    .container .w-sm-fullwidth {
+      margin: 0 auto;
+      width: calc(100% - 16px); } }
+
+/*
+  Pour les largeurs de contenu fixe
+*/
+@media (min-width: 976px) {
+  .w-3 {
+    width: calc((64px * 3) + (16px * (3 - 1))); }
+  .w-4 {
+    width: calc((64px * 4) + (16px * (4 - 1))); }
+  .w-6 {
+    width: calc((64px * 6) + (16px * (6 - 1))); }
+  .w-8 {
+    width: calc((64px * 8) + (16px * (8 - 1))); }
+  .container,
+  .w-12 {
+    width: 944px; } }
+
+@media (min-width: 1200px) {
+  .w-3 {
+    width: calc((72px * 3) + (24px * (3 - 1))); }
+  .w-4 {
+    width: calc((72px * 4) + (24px * (4 - 1))); }
+  .w-6 {
+    width: calc((72px * 6) + (24px * (6 - 1))); }
+  .w-8 {
+    width: calc((72px * 8) + (24px * (8 - 1))); }
+  .container,
+  .w-12 {
+    width: 1128px; } }
+
+@media (min-width: 1440px) {
+  .w-3 {
+    width: calc((90px * 3) + (24px * (3 - 1))); }
+  .w-4 {
+    width: calc((90px * 4) + (24px * (4 - 1))); }
+  .w-6 {
+    width: calc((90px * 6) + (24px * (6 - 1))); }
+  .w-8 {
+    width: calc((90px * 8) + (24px * (8 - 1))); }
+  .container,
+  .w-12 {
+    width: 1344px; } }
+
+/*
+  Pour le MD et plus
+*/
+@media (min-width: 976px) {
+  .container {
+    display: flex;
+    justify-content: space-between; }
+  .w-12 {
+    margin: 0 auto; } }

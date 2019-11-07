@@ -160,6 +160,6 @@
       .grid-container .grid-display .grid-column:nth-child(-n+13) {
         display: -ms-grid;
         display: grid; } }
-    @media (min-width: 320px) and (max-width: 975px) {
+    @media (min-width: 320px) and (max-width: 975.99px) {
       .grid-container .grid-display {
         width: calc(100% - 16px); } }

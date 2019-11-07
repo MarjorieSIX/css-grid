@@ -1,49 +1,5 @@
 @import "breakpoints";
-
-/*
-  Largeur de contenu maximum
-  breakpoint - marges
-*/
-$xs-max-width: 100%;
-$sm-max-width: 100%;
-$md-max-width: 944px;
-$lg-max-width: 1128px;
-$xl-max-width: 1344px;
-
-/*
-  Nombre de colonnes:
-  XS: 4 colonnes.
-  SM, MD, LG, LG-confort, XL, XL-confort: 12 colonnes
-*/
-$xs-col-count: 4;
-$sm-andplus-col-count: 12; 
-
-/*
-  Tailles de colonnes
-*/
-$md-col-width: 64px;
-$lg-col-width: 72px;
-$lgc-col-width: 50px;
-$xl-col-width: 90px;
-$xlc-col-width: 68px;
-
-/*
-  Taille des marges. (marges horizontales du contenu)
-  N'est pas utilisé comme on utilise la valeur largeur de contenu qui est le calcul breakpoint - marges
-*/
-$max-md-margin-width: 16px;
-$lg-margin-width: 24px;
-$lgc-margin-width: 48px;
-$xl-margin-width: 24px;
-$xlc-margin-width: 48px;
-
-/*
-  Taille des gutters
-  XS, SM et MD: 16px.
-  LG et XL: 24px
-*/
-$max-md-gutter-width: 16px;
-$min-lg-gutter-width: 24px;
+@import "gridflex-variables";
 
 /*
   Nom du point de rupture

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 
+  Définitions des points de rupture
+  Pour aller plus loin : https://github.com/eduardoboucas/include-media/tree/master/src
+*/
+/*
+  Mixin ciblant la valeur d'un point de rupture et plus
+  Exemple : Afficher sur un écran de taille minimum sm et plus
+  Utilisation : @include bp-above(sm) {}
+  Résultat : @media (min-width: 768px) {
+*/
+/*
+  Mixin ciblant la valeur d'un point de rupture -1px (pour éviter les conflits avec la mixin bp-above) et moins
+  Exemple : Afficher sur un écran de taille maximum sm - 1px et moins
+  Utilisation : @include bp-below(sm) {}
+  Résultat : @media (max-width: 767px) {
+*/
+/*
+  Mixin ciblant les valeurs entre deux points de rupture
+  Exemple : Afficher sur un écran de taille minimum sm et maximum md
+  Utilisation : @include bp-between(sm, md) {}
+  Résultat : @media (min-width: 768px) and (max-width: 1199px) {
+*/
+@media (max-width: 975.99px) {
+  .hide-xs,
+  .hide-md {
+    display: none !important;
+    visibility: hidden; } }

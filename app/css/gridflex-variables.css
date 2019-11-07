@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*
+  Largeur de contenu maximum
+  breakpoint - marges
+*/
+/*
+  Nombre de colonnes:
+  XS: 4 colonnes.
+  SM, MD, LG, LG-confort, XL, XL-confort: 12 colonnes
+*/
+/*
+  Tailles de colonnes
+*/
+/*
+  Taille des marges. (marges horizontales du contenu)
+  N'est pas utilisé comme on utilise la valeur largeur de contenu qui est le calcul breakpoint - marges
+*/
+/*
+  Taille des gutters
+  XS, SM et MD: 16px.
+  LG et XL: 24px
+*/
