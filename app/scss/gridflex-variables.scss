@@ -5,7 +5,7 @@
 $xs-max-width: 100%;
 $sm-max-width: 100%;
 $md-max-width: 944px;
-$lg-max-width: 1128px;
+$$sm-andplus-col-count: 1128px;
 $xl-max-width: 1344px;
 
 /*
@@ -42,4 +42,5 @@ $xlc-margin-width: 48px;
 */
 $max-md-gutter-width: 16px;
 $min-lg-gutter-width: 24px;
+$min-lgc-gutter-width: 48px;
 

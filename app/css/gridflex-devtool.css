@@ -97,69 +97,104 @@
         content: "xl";
         font-weight: bold;
         text-transform: uppercase; } }
+    @media (min-width: 1200px) and (max-width: 1439.99px) {
+      .confort .grid-container .grid-size-name:before {
+        content: "LG - Confort"; } }
+    @media (min-width: 1440px) {
+      .confort .grid-container .grid-size-name:before {
+        content: "XL - Confort"; } }
   .grid-container .grid-display {
     align-content: start;
     counter-reset: grid;
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: 1;
-    grid-template-rows: 1;
+        grid-template-rows: 1;
     height: 100vh;
     justify-content: center;
     pointer-events: none;
     position: fixed;
     width: 100%;
-    z-index: 1; }
+    z-index: 1;
+    /*@include bp-between(lg, xl) {
+      .grid-column {
+        margin: 0 $min-lg-gutter-width/2;
+        width: $lg-col-width;
+        .confort & {
+          margin: 0 $min-lgc-gutter-width/2;
+          width: $lgc-col-width;
+        }
+      }
+    }
+
+    @include bp-above(xl) {
+      .grid-column {
+        margin: 0 $min-lg-gutter-width/2;
+        width: $xl-col-width;
+        .confort & {
+          margin: 0 $min-lgc-gutter-width/2;
+          width: $xlc-col-width;
+        }
+      }
+    }
+*/ }
     .grid-container .grid-display .grid-column {
-      display: none;
       background-color: lightgreen;
       height: 100vh;
+      text-align: center;
+      padding-top: 20px;
       position: relative; }
       .grid-container .grid-display .grid-column:before {
         color: white;
         counter-increment: grid;
         content: counters(grid, "");
         font-weight: bold;
-        padding-top: 30px;
-        text-align: center; }
+        padding-top: 30px; }
     @media (min-width: 320px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: repeat(4, 1fr);
-        grid-template-columns: repeat(4, 1fr);
+        -ms-grid-columns: (1fr)[4];
+            grid-template-columns: repeat(4, 1fr);
         max-width: 100%; } }
     @media (min-width: 768px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: repeat(12, 1fr);
-        grid-template-columns: repeat(12, 1fr);
+        -ms-grid-columns: (1fr)[12];
+            grid-template-columns: repeat(12, 1fr);
         max-width: 100%; } }
     @media (min-width: 976px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: repeat(12, 1fr);
-        grid-template-columns: repeat(12, 1fr);
+        -ms-grid-columns: (1fr)[12];
+            grid-template-columns: repeat(12, 1fr);
         max-width: 944px; } }
     @media (min-width: 1200px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: repeat(12, 1fr);
-        grid-template-columns: repeat(12, 1fr);
+        -ms-grid-columns: (1fr)[12];
+            grid-template-columns: repeat(12, 1fr);
         max-width: 1128px; } }
     @media (min-width: 1440px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: repeat(12, 1fr);
-        grid-template-columns: repeat(12, 1fr);
+        -ms-grid-columns: (1fr)[12];
+            grid-template-columns: repeat(12, 1fr);
         max-width: 1344px; } }
-    @media (min-width: 320px) {
-      .grid-container .grid-display .grid-column:nth-child(-n+5) {
-        display: -ms-grid;
-        display: grid; } }
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
+      .confort .grid-container .grid-display {
+        grid-gap: 48px; } }
+    @media (min-width: 320px) and (max-width: 767.99px) {
+      .grid-container .grid-display {
+        /*.grid-column {
+        margin: 0 $max-md-gutter-width/2;
+      }*/ }
+        .grid-container .grid-display .grid-column:nth-child(-n+5) {
+          display: -ms-grid;
+          display: grid; } }
+    @media (min-width: 768px) and (max-width: 975.99px) {
       .grid-container .grid-display .grid-column:nth-child(-n+13) {
         display: -ms-grid;
         display: grid; } }
     @media (min-width: 320px) and (max-width: 975.99px) {
       .grid-container .grid-display {
-        width: calc(100% - 16px); } }
+        width: calc(100% - (16px * 2)); } }

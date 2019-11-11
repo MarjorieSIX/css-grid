@@ -7,7 +7,7 @@
   margin: 0 auto;
   padding: 20px;
   @include bp-between(xs, md) {
-    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+    width: calc(#{$sm-max-width} - (#{$max-md-margin-width} * 2));
   }
   @include bp-between(md, lg) {
     width: #{$md-max-width};
@@ -62,7 +62,7 @@
 */
 @include bp-below(sm) {
   .container {
-    width: calc(#{$xs-max-width} - #{$max-md-margin-width});
+    width: calc(#{$xs-max-width} - (#{$max-md-margin-width} * 2));
     &.xs-flex {
       display: flex;
       justify-content: space-between;
@@ -84,7 +84,7 @@
   .container {
     display: flex;
     justify-content: space-between;
-    width: calc(#{$sm-max-width} - #{$max-md-margin-width});
+    width: calc(#{$sm-max-width} - (#{$max-md-margin-width} * 2));
     .w-sm-3 {
       background: lightcyan;
       width: calc((#{$sm-max-width} - (#{$max-md-gutter-width}  * 3)) / 4);
@@ -146,6 +146,53 @@ $layout-fixe: (
     .container, 
     .w-#{$grid-columns} {
       width: #{$grid-width};
+    }
+  }
+}
+
+
+/*
+  Pour le mode "confort" sur LG et XL
+  Attention le mode confort est activé sur une page complète et non sur des blocs de contenus.
+  LG
+*/
+@include bp-between(lg, xl) {
+  .confort {
+    .container {
+      width: calc(#{$lg-max-width} - (#{$lgc-margin-width} * 2));
+
+      .w-sm-fullwidth {
+        width: calc(#{$lg-max-width} - (#{$lgc-margin-width} * 2));
+      }
+
+      $nbcols: '3', '4', '6', '8';
+      @for $i from 1 through length($nbcols) {
+        .w-#{nth($nbcols, $i)} {
+          width: calc((#{$lgc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lg-gutter-width} * (#{nth($nbcols, $i)} - 1)));
+        }
+      }
+    }
+  }
+}
+
+/*
+  XL
+*/
+@include bp-above(xl) {
+  .confort {
+    .container {
+      width: calc(#{$xl-max-width} - (#{$xlc-margin-width} * 2));
+
+      .w-sm-fullwidth {
+        width: calc(#{$xl-max-width} - (#{$xlc-margin-width} * 2));
+      }
+
+      $nbcols: '3', '4', '6', '8';
+      @for $i from 1 through length($nbcols) {
+        .w-#{nth($nbcols, $i)} {
+          width: calc((#{$xlc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lg-gutter-width} * (#{nth($nbcols, $i)} - 1)));
+        }
+      }
     }
   }
 }

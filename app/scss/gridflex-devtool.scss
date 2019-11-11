@@ -75,14 +75,27 @@ $grid: (
         }
       }
     }
+
+    .confort & {
+      @include bp-between(lg, xl) {
+        &:before {
+          content: "LG - Confort";
+        }
+      }
+      @include bp-above(xl) {
+        &:before {
+          content: "XL - Confort";
+        }
+      }
+    }
   }
 
   .grid-display {
     align-content: start;
     counter-reset: grid;
-    display: -ms-grid;
+    //display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 1;
+    //-ms-grid-rows: 1;
     grid-template-rows: 1;
     height: 100vh;
     justify-content: center;
@@ -92,9 +105,10 @@ $grid: (
     z-index: 1;
 
     .grid-column {
-      display: none;
       background-color: lightgreen;
       height: 100vh;
+      text-align: center;
+      padding-top: 20px;
       position: relative;
       &:before {
         color: white;
@@ -102,35 +116,66 @@ $grid: (
         content: counters(grid,"");
         font-weight: bold;
         padding-top: 30px;
-        text-align: center;
       }
     }
 
     @each $bp-name, $breakpoint, $grid-width, $grid-columns, $grid-gutters, $grid-margins in $grid {
       @media (min-width: #{$breakpoint}) {
         grid-gap: #{$grid-gutters};
-        -ms-grid-columns: repeat(#{$grid-columns}, 1fr);
+        //-ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-columns: repeat(#{$grid-columns}, 1fr);
-        // margin: 0 #{$grid-gutters};
         max-width: #{$grid-width};
       }
     }
 
-    @media (min-width: map-get($breakpoints, xs)) {
-      .grid-column:nth-child(-n+5) {
-        display: -ms-grid;
-        display: grid;
+    .confort & {
+      @include bp-above(lg) {
+        grid-gap: #{$min-lgc-gutter-width};
       }
     }
-    @media (min-width: map-get($breakpoints, sm)) {
+    /*@include bp-between(lg, xl) {
+      .grid-column {
+        margin: 0 $min-lg-gutter-width/2;
+        width: $lg-col-width;
+        .confort & {
+          margin: 0 $min-lgc-gutter-width/2;
+          width: $lgc-col-width;
+        }
+      }
+    }
+
+    @include bp-above(xl) {
+      .grid-column {
+        margin: 0 $min-lg-gutter-width/2;
+        width: $xl-col-width;
+        .confort & {
+          margin: 0 $min-lgc-gutter-width/2;
+          width: $xlc-col-width;
+        }
+      }
+    }
+*/
+    @include bp-between(xs, sm) {
+      /*.grid-column {
+        margin: 0 $max-md-gutter-width/2;
+      }*/
+
+      .grid-column:nth-child(-n+5) {
+        //display: -ms-grid;
+        display: grid;
+        //margin-right: 0;
+      }
+    }
+
+    @include bp-between(sm, md) {
       .grid-column:nth-child(-n+13) {
-        display: -ms-grid;
+        //display: -ms-grid;
         display: grid;
       }
     }
 
     @include bp-between(xs, md) {
-      width: calc(100% - #{$max-md-margin-width});
+      width: calc(100% - (#{$max-md-margin-width} * 2));
     }
   }
 }
