@@ -26,7 +26,7 @@
   z-index: 2;
 }
 
-.container { 
+.row { 
   background-color: #aaa;
   margin: 0 auto;
   z-index: 2;
@@ -61,7 +61,7 @@
   Pour le XS avec largeurs de contenu fluides
 */
 @include bp-below(sm) {
-  .container {
+  .row {
     width: calc(#{$xs-max-width} - (#{$max-md-margin-width} * 2));
     &.xs-flex {
       display: flex;
@@ -82,31 +82,26 @@
   Pour le SM avec largeurs de contenu fluides
 */
 @include bp-between(sm, md) {
-  .container {
+  .row {
     display: flex;
     justify-content: space-between;
     width: calc(#{$sm-max-width} - (#{$max-md-margin-width} * 2));
-    .w-sm-* {
-      margin-left: auto;
-      margin-right: auto;
-    }
     .w-sm-3 {
       background: lightcyan;
+      margin-left: 0;
+      margin-right: 0;
       width: calc((#{$sm-max-width} - (#{$max-md-gutter-width}  * 3)) / 4);
     }
     .w-sm-6 {
       background: lightgoldenrodyellow;
+      margin-left: 0;
+      margin-right: 0;
       width: calc((#{$sm-max-width} / 2) - (#{$max-md-gutter-width} / 2));
     }
-    .w-sm-#{$sm-andplus-col-count}{
-      margin-left: auto;
-      margin-right: auto;
+    .w-sm-#{$sm-andplus-col-count} {
+      margin-left: 0;
+      margin-right: 0;
       width: #{$sm-max-width};
-    }
-    .w-sm-fullwidth {
-      margin-left: auto;
-      margin-right: auto;
-      width: calc(#{$sm-max-width} - #{$max-md-margin-width});
     }
   }
 }
@@ -150,7 +145,7 @@ $layout-fixe: (
       }
     }
 
-    .container, 
+    .row, 
     .w-#{$grid-columns} {
       width: #{$grid-width};
     }
@@ -165,17 +160,13 @@ $layout-fixe: (
 */
 @include bp-between(lg, xl) {
   .confort {
-    .container {
-      width: calc(#{$lg-max-width} - (#{$lgc-margin-width} * 2));
-
-      .w-sm-fullwidth {
-        width: calc(#{$lg-max-width} - (#{$lgc-margin-width} * 2));
-      }
+    .row {
+      width: $lg-max-width;
 
       $nbcols: '3', '4', '6', '8';
       @for $i from 1 through length($nbcols) {
         .w-#{nth($nbcols, $i)} {
-          width: calc((#{$lgc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lg-gutter-width} * (#{nth($nbcols, $i)} - 1)));
+          width: calc((#{$lgc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lgc-gutter-width} * (#{nth($nbcols, $i)} - 1)));
         }
       }
     }
@@ -187,17 +178,13 @@ $layout-fixe: (
 */
 @include bp-above(xl) {
   .confort {
-    .container {
-      width: calc(#{$xl-max-width} - (#{$xlc-margin-width} * 2));
-
-      .w-sm-fullwidth {
-        width: calc(#{$xl-max-width} - (#{$xlc-margin-width} * 2));
-      }
+    .row {
+      width: $xl-max-width;
 
       $nbcols: '3', '4', '6', '8';
       @for $i from 1 through length($nbcols) {
         .w-#{nth($nbcols, $i)} {
-          width: calc((#{$xlc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lg-gutter-width} * (#{nth($nbcols, $i)} - 1)));
+          width: calc((#{$xlc-col-width} * #{nth($nbcols, $i)}) + (#{$min-lgc-gutter-width} * (#{nth($nbcols, $i)} - 1)));
         }
       }
     }
@@ -208,7 +195,7 @@ $layout-fixe: (
   Pour le MD et plus
 */
 @include bp-above(md) {
-  .container {
+  .row {
     display: flex;
     justify-content: space-between;
   }

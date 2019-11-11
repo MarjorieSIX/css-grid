@@ -8,6 +8,12 @@
   },
   "author": "",
   "licence": "",
+  "browserslist": [
+    "last 1 version",
+    "Safari 9",
+    "Safari 10",
+    "Safari 11"
+  ],
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",

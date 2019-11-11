@@ -106,10 +106,8 @@
   .grid-container .grid-display {
     align-content: start;
     counter-reset: grid;
-    display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 1;
-        grid-template-rows: 1;
+    grid-template-rows: 1;
     height: 100vh;
     justify-content: center;
     pointer-events: none;
@@ -153,32 +151,27 @@
     @media (min-width: 320px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[4];
-            grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         max-width: 100%; } }
     @media (min-width: 768px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 100%; } }
     @media (min-width: 976px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 944px; } }
     @media (min-width: 1200px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 1128px; } }
     @media (min-width: 1440px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 1344px; } }
     @media (min-width: 1200px) {
       .confort .grid-container .grid-display {
@@ -189,11 +182,9 @@
         margin: 0 $max-md-gutter-width/2;
       }*/ }
         .grid-container .grid-display .grid-column:nth-child(-n+5) {
-          display: -ms-grid;
           display: grid; } }
     @media (min-width: 768px) and (max-width: 975.99px) {
       .grid-container .grid-display .grid-column:nth-child(-n+13) {
-        display: -ms-grid;
         display: grid; } }
     @media (min-width: 320px) and (max-width: 975.99px) {
       .grid-container .grid-display {

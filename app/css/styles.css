@@ -484,10 +484,8 @@ template {
   .grid-container .grid-display {
     align-content: start;
     counter-reset: grid;
-    display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 1;
-        grid-template-rows: 1;
+    grid-template-rows: 1;
     height: 100vh;
     justify-content: center;
     pointer-events: none;
@@ -531,32 +529,27 @@ template {
     @media (min-width: 320px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[4];
-            grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         max-width: 100%; } }
     @media (min-width: 768px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 100%; } }
     @media (min-width: 976px) {
       .grid-container .grid-display {
         grid-gap: 16px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 944px; } }
     @media (min-width: 1200px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 1128px; } }
     @media (min-width: 1440px) {
       .grid-container .grid-display {
         grid-gap: 24px;
-        -ms-grid-columns: (1fr)[12];
-            grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr);
         max-width: 1344px; } }
     @media (min-width: 1200px) {
       .confort .grid-container .grid-display {
@@ -567,11 +560,9 @@ template {
         margin: 0 $max-md-gutter-width/2;
       }*/ }
         .grid-container .grid-display .grid-column:nth-child(-n+5) {
-          display: -ms-grid;
           display: grid; } }
     @media (min-width: 768px) and (max-width: 975.99px) {
       .grid-container .grid-display .grid-column:nth-child(-n+13) {
-        display: -ms-grid;
         display: grid; } }
     @media (min-width: 320px) and (max-width: 975.99px) {
       .grid-container .grid-display {
@@ -642,7 +633,7 @@ template {
   width: 100%;
   z-index: 2; }
 
-.container {
+.row {
   background-color: #aaa;
   margin: 0 auto;
   z-index: 2; }
@@ -671,37 +662,40 @@ template {
   Pour le XS avec largeurs de contenu fluides
 */
 @media (max-width: 767.99px) {
-  .container {
+  .row {
     width: calc(100% - (16px * 2)); }
-    .container.xs-flex {
+    .row.xs-flex {
       display: flex;
       justify-content: space-between; }
-      .container.xs-flex .w-xs-2 {
+      .row.xs-flex .w-xs-2 {
         width: calc(((100% / 4) * 2) - (16px / 2)); }
-    .container .w-xs-4 {
-      margin: 0 auto;
+    .row .w-xs-4 {
+      margin-left: auto;
+      margin-right: auto;
       width: 100%; } }
 
 /*
   Pour le SM avec largeurs de contenu fluides
 */
 @media (min-width: 768px) and (max-width: 975.99px) {
-  .container {
+  .row {
     display: flex;
     justify-content: space-between;
     width: calc(100% - (16px * 2)); }
-    .container .w-sm-3 {
+    .row .w-sm-3 {
       background: lightcyan;
+      margin-left: 0;
+      margin-right: 0;
       width: calc((100% - (16px  * 3)) / 4); }
-    .container .w-sm-6 {
+    .row .w-sm-6 {
       background: lightgoldenrodyellow;
+      margin-left: 0;
+      margin-right: 0;
       width: calc((100% / 2) - (16px / 2)); }
-    .container .w-sm-12 {
-      margin: 0 auto;
-      width: 100%; }
-    .container .w-sm-fullwidth {
-      margin: 0 auto;
-      width: calc(100% - 16px); } }
+    .row .w-sm-12 {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%; } }
 
 /*
   Pour les largeurs de contenu fixe
@@ -715,7 +709,7 @@ template {
     width: calc((64px * 6) + (16px * (6 - 1))); }
   .w-8 {
     width: calc((64px * 8) + (16px * (8 - 1))); }
-  .container,
+  .row,
   .w-12 {
     width: 944px; } }
 
@@ -728,7 +722,7 @@ template {
     width: calc((72px * 6) + (24px * (6 - 1))); }
   .w-8 {
     width: calc((72px * 8) + (24px * (8 - 1))); }
-  .container,
+  .row,
   .w-12 {
     width: 1128px; } }
 
@@ -741,7 +735,7 @@ template {
     width: calc((90px * 6) + (24px * (6 - 1))); }
   .w-8 {
     width: calc((90px * 8) + (24px * (8 - 1))); }
-  .container,
+  .row,
   .w-12 {
     width: 1344px; } }
 
@@ -751,45 +745,42 @@ template {
   LG
 */
 @media (min-width: 1200px) and (max-width: 1439.99px) {
-  .confort .container {
-    width: calc(1128px - (48px * 2)); }
-    .confort .container .w-sm-fullwidth {
-      width: calc(1128px - (48px * 2)); }
-    .confort .container .w-3 {
-      width: calc((50px * 3) + (24px * (3 - 1))); }
-    .confort .container .w-4 {
-      width: calc((50px * 4) + (24px * (4 - 1))); }
-    .confort .container .w-6 {
-      width: calc((50px * 6) + (24px * (6 - 1))); }
-    .confort .container .w-8 {
-      width: calc((50px * 8) + (24px * (8 - 1))); } }
+  .confort .row {
+    width: 1128px; }
+    .confort .row .w-3 {
+      width: calc((50px * 3) + (48px * (3 - 1))); }
+    .confort .row .w-4 {
+      width: calc((50px * 4) + (48px * (4 - 1))); }
+    .confort .row .w-6 {
+      width: calc((50px * 6) + (48px * (6 - 1))); }
+    .confort .row .w-8 {
+      width: calc((50px * 8) + (48px * (8 - 1))); } }
 
 /*
   XL
 */
 @media (min-width: 1440px) {
-  .confort .container {
-    width: calc(1344px - (48px * 2)); }
-    .confort .container .w-sm-fullwidth {
-      width: calc(1344px - (48px * 2)); }
-    .confort .container .w-3 {
-      width: calc((68px * 3) + (24px * (3 - 1))); }
-    .confort .container .w-4 {
-      width: calc((68px * 4) + (24px * (4 - 1))); }
-    .confort .container .w-6 {
-      width: calc((68px * 6) + (24px * (6 - 1))); }
-    .confort .container .w-8 {
-      width: calc((68px * 8) + (24px * (8 - 1))); } }
+  .confort .row {
+    width: 1344px; }
+    .confort .row .w-3 {
+      width: calc((68px * 3) + (48px * (3 - 1))); }
+    .confort .row .w-4 {
+      width: calc((68px * 4) + (48px * (4 - 1))); }
+    .confort .row .w-6 {
+      width: calc((68px * 6) + (48px * (6 - 1))); }
+    .confort .row .w-8 {
+      width: calc((68px * 8) + (48px * (8 - 1))); } }
 
 /*
   Pour le MD et plus
 */
 @media (min-width: 976px) {
-  .container {
+  .row {
     display: flex;
     justify-content: space-between; }
   .w-12 {
-    margin: 0 auto; } }
+    margin-left: auto;
+    margin-right: auto; } }
 
 /* 
   Définitions des points de rupture
